@@ -1,19 +1,11 @@
 #! /usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-"""
-书籍《Python股票量化交易入门到实践 》案例例程
-仅用于教学目的，严禁转发和用于盈利目的，违者必究
-通过if True/False 语句 开关所要调试的例程
-"""
-
-# 第三章 第三方库Numpy快速入门
 
 import numpy as np
 
 print(np.__version__)  # 1.15.1
 
-# 3.1 初识N维数组对象
 if False:
     array_1x6 = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], dtype=np.float64)
     print(array_1x6)

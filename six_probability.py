@@ -1,13 +1,6 @@
 #! /usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-"""
-书籍《Python股票量化交易入门到实践 》案例例程
-仅用于教学目的，严禁转发和用于盈利目的，违者必究
-通过if True/False 语句 开关所要调试的例程
-"""
-
-# 第六章 统计概率理论快速入门
 
 import numpy as np
 import matplotlib

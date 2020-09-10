@@ -1,13 +1,6 @@
 #! /usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-"""
-书籍《Python股票量化交易入门到实践 》案例例程
-仅用于教学目的，严禁转发和用于盈利目的，违者必究
-通过if True/False 语句 开关所要调试的例程
-"""
-
-# 第四章 第三方库Pandas快速入门
 
 import pandas as pd
 import numpy as np

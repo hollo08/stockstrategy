@@ -1,13 +1,6 @@
 #! /usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-"""
-书籍《Python股票量化交易入门到实践 》案例例程
-仅用于教学目的，严禁转发和用于盈利目的，违者必究
-通过if True/False 语句 开关所要调试的例程
-"""
-
-# 第五章 第三方库Matplotlib快速入门
 
 import matplotlib.pyplot as plt
 import mpl_finance as mpf  # 替换 import matplotlib.finance as mpf
