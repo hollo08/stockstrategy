@@ -8,6 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import tushare as ts
 import baostock as bs
+import os
 
 pd.set_option('display.expand_frame_repr', False)  # False不允许换行
 pd.set_option('display.max_rows', 10)  # 显示的最大行数
@@ -213,7 +214,8 @@ def ts_data_sh_h():
 
 
 # 设置token
-token = 'tushare网站的token'
+token = os.environ.get('tushare_token')
+print(token)
 pro = ts.pro_api(token)  # 初始化pro接口
 
 

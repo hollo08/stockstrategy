@@ -20,9 +20,9 @@ import matplotlib.pyplot as plt
 import mpl_finance as mpf  # 替换 import matplotlib.finance as mpf
 import matplotlib.gridspec as gridspec  # 分割子图
 
-from Code_7_for_stock_data import bs_k_data_stock, pro_daily_stock, json_to_str
-from Code_8_for_tech_indicator import MplVisualIf
-from Code_9_for_risk_Profit import draw_trade_chart, draw_absolute_profit, draw_relative_profit, \
+from seven import bs_k_data_stock, pro_daily_stock, json_to_str
+from eight import MplVisualIf
+from nine_risk import draw_trade_chart, draw_absolute_profit, draw_relative_profit, \
     draw_closemax_risk, draw_profitmax_risk, MultiTraceIf
 
 # 参数设置

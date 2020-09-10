@@ -973,8 +973,8 @@ class MultiGraphIf(MplTypesDraw):
 
 
 if __name__ == '__main__':
-    # df_stockload = pro_daily_stock('000651.SZ', '20190601', '20200909')
-    df_stockload = bs_k_data_stock("sz.000651", '2018-06-01', '2019-06-01')  # 采用未复权数据
+    df_stockload = pro_daily_stock('000651.SZ', '20190601', '20200909')
+    #df_stockload = bs_k_data_stock("sz.000651", '2018-06-01', '2019-06-01')  # 采用未复权数据
     print(df_stockload.head(10))
 
     # basic
@@ -997,7 +997,7 @@ if __name__ == '__main__':
         draw_gap_annotate(df_stockload.copy(deep=True))  # 跳空缺口提示
     if False:
         draw_kweek_chart(df_stockload.copy(deep=True))  # 重采样周K线图形
-    if False:
+    if True:
         draw_fibonacci_chart(df_stockload.copy(deep=True))  # 黄金分割率绘制支撑与阻力线
     if False:
         draw_tasma_chart(df_stockload.copy(deep=True))  # talib SMA 普通移动平均线
@@ -1010,7 +1010,7 @@ if __name__ == '__main__':
     if False:
         talib_speed_example()  # 对比效率上的差别
 
-    if True:
+    if False:
         layout_dict = {'figsize': (12, 6),
                        'nrows': 4,
                        'ncols': 1,
