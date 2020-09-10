@@ -8,9 +8,9 @@ import numpy as np
 import pandas as pd
 
 # 正常显示画图时出现的中文和负号
-# from pylab import mpl
-# mpl.rcParams['font.sans-serif']=['SimHei']
-# mpl.rcParams['axes.unicode_minus']=False
+from pylab import mpl
+mpl.rcParams['font.sans-serif']=['SimHei']
+mpl.rcParams['axes.unicode_minus']=False
 
 # 5.1 两种绘图方式的区分
 if False:
