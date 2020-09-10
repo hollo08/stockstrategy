@@ -357,7 +357,7 @@ if True:
     print("*********************\n")
 
 # 3.4.3 线性代数处理函数
-if False:
+if True:
     matrix_a = np.mat('1 3 5; 2 4 6')
     matrix_b = np.mat([[1, 3, 5], [2, 4, 6]])
     print(matrix_a)

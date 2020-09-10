@@ -1082,24 +1082,7 @@ if True:
 
     if True:
         # 引用于2.6.2小节
-        import functools, time
-
-
-        # 定义测试代码执行时间的装饰器-三阶
-        def timeit_test(number=3, repeat=3):
-            def decorator(func):
-                @functools.wraps(func)
-                def wrapper(*args, **kwargs):
-                    for i in range(repeat):
-                        start = time.perf_counter()
-                        for _ in range(number):
-                            func(*args, **kwargs)
-                        elapsed = (time.perf_counter() - start)
-                        print('Time of {} used: {} '.format(i, elapsed))
-
-                return wrapper
-
-            return decorator
+        import timeit_test
 
 
         @timeit_test(number=10, repeat=1)
