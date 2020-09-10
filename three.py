@@ -120,35 +120,14 @@ if False:
     """
 
 # 3.3 高效处理的性能对比
-if False:
-    # 引用于2.6.2小节
-    import functools, time
+if True:
+    from timeit_test import timeit_test
+    i = 1
 
-
-    # 定义测试代码执行时间的装饰器-三阶
-    def timeit_test(number=3, repeat=3):
-        def decorator(func):
-            @functools.wraps(func)
-            def wrapper(*args, **kwargs):
-                for i in range(repeat):
-                    start = time.perf_counter()
-                    for _ in range(number):
-                        func(*args, **kwargs)
-                    elapsed = (time.perf_counter() - start)
-                    print('Time of {} used: {} '.format(i, elapsed))
-
-            return wrapper
-
-        return decorator
-
-        # 测试Numpy数组和等价的Python列表性能差距
-
-
-    if False:
+    if i==1:
         @timeit_test(number=1, repeat=1)
         def list_test():
             my_list = list(range(1000000))
-
 
         @timeit_test(number=1, repeat=1)
         def ndarray_test():
