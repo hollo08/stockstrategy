@@ -1,7 +1,7 @@
 import functools
 import time
 
-
+#使用装饰器输出程序运行消耗的时间
 def timeit_test(number=3, repeat=3):
     def decorator(func):
         @functools.wraps(func)
