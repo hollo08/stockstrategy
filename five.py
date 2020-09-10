@@ -13,7 +13,7 @@ mpl.rcParams['font.sans-serif']=['SimHei']
 mpl.rcParams['axes.unicode_minus']=False
 
 # 5.1 两种绘图方式的区分
-if False:
+if True:
     # 函数式绘图
     # 创建图形并设置大小
     plt.figure(figsize=(12, 8))
