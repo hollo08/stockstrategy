@@ -1075,7 +1075,7 @@ if True:
 
     if True:
         # 引用于2.6.2小节
-        import timeit_test
+        from timeit_test import timeit_test
 
 
         @timeit_test(number=10, repeat=1)
