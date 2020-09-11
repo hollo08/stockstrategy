@@ -1,13 +1,6 @@
 #!/usr/bin/python
 # coding=utf-8
 
-"""
-书籍《Python股票量化交易入门到实践 》案例例程
-仅用于教学目的，严禁转发和用于盈利目的，违者必究
-通过if True/False 语句 开关所要调试的例程
-"""
-
-# 第九章 构建股票量化交易策略体系——建立选股策略
 
 import pandas as pd
 import tushare as ts
@@ -33,7 +26,7 @@ pd.set_option('precision', 2)  # 显示小数点后的位数
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
-################################### 走势线性回归建立选股模型 #####################################
+
 df_stockload = bs_k_data_stock("sz.000651", '2018-06-01', '2019-06-01')
 df_stockload_fst = bs_k_data_stock("sz.000651", '2018-06-01', '2019-01-01')
 df_stockload_sec = bs_k_data_stock("sz.000651", '2019-01-01', '2019-06-01')
