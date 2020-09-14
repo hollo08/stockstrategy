@@ -4,7 +4,7 @@
 import datetime
 import numpy as np
 import pandas_datareader.data as web
-import pandas as pd
+import pandas_test as pd
 import matplotlib.pyplot as plt
 import tushare as ts
 import baostock as bs

@@ -5,7 +5,7 @@
 import matplotlib.pyplot as plt
 import mpl_finance as mpf  # 替换 import matplotlib.finance as mpf
 import numpy as np
-import pandas as pd
+import pandas_test as pd
 
 # 正常显示画图时出现的中文和负号
 from pylab import mpl

@@ -7,7 +7,8 @@ import numpy as np
 
 print(pd.__version__)  # 0.23.4
 
-if False:
+
+def np_array():
     deftype = ([('date', np.str_, 10), ('close', np.float32), ('vol', np.uint32)])
     stock = np.array([('2019-01-11', 11.01, 1300000),
                       ('2019-01-12', 12.11, 1200000),
@@ -19,334 +20,326 @@ if False:
      ('2019-01-13', 15.01, 1500000) ('2019-01-14', 13.01, 1600000)]
     """
 
+
 # 4.2 Series的生成和访问
-if False:
-    if False:
-        # Series的生成#
-        # data = list
-        s_list = pd.Series([-1.55666192, 0.127451231, "str-AA", -1.37775038],
-                           index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
-        print(s_list)  # 列表中包含多种数据类型
-        """
-        2019-01-11    -1.55666
-        2019-01-12    0.127451
-        2019-01-13      str-AA
-        2019-01-14    -1.37775
-        dtype: object
-        """
-        # data = ndarray
-        s_ndarray = pd.Series(np.arange(4), index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
-        print(s_ndarray)
-        """
-        2019-01-11    0
-        2019-01-12    1
-        2019-01-13    2
-        2019-01-14    3
-        dtype: int64
-        """
-        # data = scalar value
-        s_scalar = pd.Series(5., index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='int8')
-        print(s_scalar)  # dtype指定元素为'int8'
-        """
-        2019-01-11    5
-        2019-01-12    5
-        2019-01-13    5
-        2019-01-14    5
-        dtype: int8
-        """
+def pd_code1():
+    # Series的生成#
+    # data = list
+    s_list = pd.Series([-1.55666192, 0.127451231, "str-AA", -1.37775038],
+                       index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
+    print(s_list)  # 列表中包含多种数据类型
 
-        # data = dict
-        s_dict = pd.Series({'2019-01-11': 0., '2019-01-12': 1., '2019-01-13': 2., '2019-01-14': 3.})
-        print(s_dict)
-        """
-        2019-01-11    0.0
-        2019-01-12    1.0
-        2019-01-13    2.0
-        2019-01-14    3.0
-        dtype: float64
-        """
-        # data = dict
-        s_dict = pd.Series({'2019-01-11': 0., '2019-01-12': 1.},
-                           index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
-        print(s_dict)  # 元素数量少于索引，缺失位置为NaN
-        """
-        2019-01-11    0.0
-        2019-01-12    1.0
-        2019-01-13    NaN
-        2019-01-14    NaN
-        dtype: float64
-        """
-    if False:
-        # Series的访问
+    # data = ndarray
+    s_ndarray = pd.Series(np.arange(4), index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
+    print(s_ndarray)
+    """
+    2019-01-11    0
+    2019-01-12    1
+    2019-01-13    2
+    2019-01-14    3
+    dtype: int64
+    """
+    # data = scalar value
+    s_scalar = pd.Series(5., index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='int8')
+    print(s_scalar)  # dtype指定元素为'int8'
+    """
+    2019-01-11    5
+    2019-01-12    5
+    2019-01-13    5
+    2019-01-14    5
+    dtype: int8
+    """
 
-        # 创建被访问对象
-        series_access = pd.Series([10.23, 11.24, 12.25, 13.26],
-                                  index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
-        print(series_access)
-        """
-        2019-01-11    10.23
-        2019-01-12    11.24
-        2019-01-13    12.25
-        2019-01-14    13.26
-        dtype: float64
-        """
+    # data = dict
+    s_dict = pd.Series({'2019-01-11': 0., '2019-01-12': 1., '2019-01-13': 2., '2019-01-14': 3.})
+    print(s_dict)
+    """
+    2019-01-11    0.0
+    2019-01-12    1.0
+    2019-01-13    2.0
+    2019-01-14    3.0
+    dtype: float64
+    """
+    # data = dict
+    s_dict = pd.Series({'2019-01-11': 0., '2019-01-12': 1.},
+                       index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
+    print(s_dict)  # 元素数量少于索引，缺失位置为NaN
+    """
+    2019-01-11    0.0
+    2019-01-12    1.0
+    2019-01-13    NaN
+    2019-01-14    NaN
+    dtype: float64
+    """
+    # Series的访问
 
-        # 访问Series全部元素数值
-        print(series_access.values)
-        # [10.23 11.24 12.25 13.26]
+    # 创建被访问对象
+    series_access = pd.Series([10.23, 11.24, 12.25, 13.26],
+                              index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
+    print(series_access)
+    """
+    2019-01-11    10.23
+    2019-01-12    11.24
+    2019-01-13    12.25
+    2019-01-14    13.26
+    dtype: float64
+    """
 
-        # 访问Series全部索引值
-        print(series_access.index)
-        # Index(['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='object')
+    # 访问Series全部元素数值
+    print(series_access.values)
+    # [10.23 11.24 12.25 13.26]
 
-        # 访问'2019-01-11'索引的元素值
-        print(series_access['2019-01-11'])
-        # 10.23
+    # 访问Series全部索引值
+    print(series_access.index)
+    # Index(['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='object')
 
-        # 访问'2019-01-11'和'2019-01-13'索引的元素值
-        print(series_access[['2019-01-11', '2019-01-13']])
-        """
-        2019-01-11    10.23
-        2019-01-13    12.25
-        dtype: float64
-        """
+    # 访问'2019-01-11'索引的元素值
+    print(series_access['2019-01-11'])
+    # 10.23
 
-        # 访问前两个数据
-        print(series_access[:2])
-        """
-        2019-01-11    10.23
-        2019-01-12    11.24
-        dtype: float64        
-        """
+    # 访问'2019-01-11'和'2019-01-13'索引的元素值
+    print(series_access[['2019-01-11', '2019-01-13']])
+    """
+    2019-01-11    10.23
+    2019-01-13    12.25
+    dtype: float64
+    """
+
+    # 访问前两个数据
+    print(series_access[:2])
+    """
+    2019-01-11    10.23
+    2019-01-12    11.24
+    dtype: float64        
+    """
+
 
 # 4.3 DataFrame的生成和访问
-if True:
-    if False:
-        # DataFrame的生成
-        # 以列表组成的字典形式创建DataFrame
-        df_list_dict = pd.DataFrame({'Close': [1., 2., 3., 5], 'Open': [1., 2., 3., 4.]},
-                                    index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
-        print(df_list_dict)  # 创建2行4列的表格
-        """
-                    Close  Open
-        2019-01-11    1.0   1.0
-        2019-01-12    2.0   2.0
-        2019-01-13    3.0   3.0
-        2019-01-14    5.0   4.0
-        """
-        # 以嵌套列表形式创建DataFrame
-        df_list_list = pd.DataFrame([[1., 2., 3., 5], [1., 2., 3., 4.]],
-                                    index=['2019-01-11', '2019-01-12'],
-                                    columns=['Close', 'Open', 'Low', 'High'])
-        print(df_list_list)
-        """
-                    Close  Open  Low  High
-        2019-01-11    1.0   2.0  3.0   5.0
-        2019-01-12    1.0   2.0  3.0   4.0
-        """
+def pd_code2():
+    # DataFrame的生成
+    # 以列表组成的字典形式创建DataFrame
+    df_list_dict = pd.DataFrame({'Close': [1., 2., 3., 5], 'Open': [1., 2., 3., 4.]},
+                                index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])
+    print(df_list_dict)  # 创建2行4列的表格
+    """
+                Close  Open
+    2019-01-11    1.0   1.0
+    2019-01-12    2.0   2.0
+    2019-01-13    3.0   3.0
+    2019-01-14    5.0   4.0
+    """
+    # 以嵌套列表形式创建DataFrame
+    df_list_list = pd.DataFrame([[1., 2., 3., 5], [1., 2., 3., 4.]],
+                                index=['2019-01-11', '2019-01-12'],
+                                columns=['Close', 'Open', 'Low', 'High'])
+    print(df_list_list)
+    """
+                Close  Open  Low  High
+    2019-01-11    1.0   2.0  3.0   5.0
+    2019-01-12    1.0   2.0  3.0   4.0
+    """
 
-        # 二维ndarray形式创建DataFrame
-        ndarray_data = np.zeros((2), dtype=[('Close', 'i4'), ('Open', 'f4'), ('Low', 'a10')])  # 整数、浮点和字符串
-        print(ndarray_data)
-        """
-        [(0, 0., b'') (0, 0., b'')]
-        """
-        ndarray_data[:] = [(1, 2., '11.2'), (2, 3., "12.3")]
-        df_ndarray = pd.DataFrame(data=ndarray_data,
-                                  index=['2019-01-11', '2019-01-12'])  # 使用默认的定列索引，也可指定列索引columns，这样最终按指定的顺序进行排列
-        print(df_ndarray)
-        """
-                    Close  Open      Low
-        2019-01-11      1   2.0  b'11.2'
-        2019-01-12      2   3.0  b'12.3'
-        """
+    # 二维ndarray形式创建DataFrame
+    ndarray_data = np.zeros((2), dtype=[('Close', 'i4'), ('Open', 'f4'), ('Low', 'a10')])  # 整数、浮点和字符串
+    print(ndarray_data)
+    """
+    [(0, 0., b'') (0, 0., b'')]
+    """
+    ndarray_data[:] = [(1, 2., '11.2'), (2, 3., "12.3")]
+    df_ndarray = pd.DataFrame(data=ndarray_data,
+                              index=['2019-01-11', '2019-01-12'])  # 使用默认的定列索引，也可指定列索引columns，这样最终按指定的顺序进行排列
+    print(df_ndarray)
+    """
+                Close  Open      Low
+    2019-01-11      1   2.0  b'11.2'
+    2019-01-12      2   3.0  b'12.3'
+    """
 
-        # 以Series组成的字典形式创建DataFrame
-        series_data = {'Close': pd.Series([1., 2., 3.], index=['2019-01-11', '2019-01-12', '2019-01-13']),
-                       'Open': pd.Series([1., 2., 3., 4.],
-                                         index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])}
-        df_series = pd.DataFrame(series_data)
-        print(df_series)
-        """
-                    Close  Open
-        2019-01-11    1.0   1.0
-        2019-01-12    2.0   2.0
-        2019-01-13    3.0   3.0
-        2019-01-14    NaN   4.0
-        """
+    # 以Series组成的字典形式创建DataFrame
+    series_data = {'Close': pd.Series([1., 2., 3.], index=['2019-01-11', '2019-01-12', '2019-01-13']),
+                   'Open': pd.Series([1., 2., 3., 4.],
+                                     index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])}
+    df_series = pd.DataFrame(series_data)
+    print(df_series)
+    """
+                Close  Open
+    2019-01-11    1.0   1.0
+    2019-01-12    2.0   2.0
+    2019-01-13    3.0   3.0
+    2019-01-14    NaN   4.0
+    """
 
-        df_dict_list = pd.DataFrame([{'Close': 1, 'Open': 2}, {'Close': 5, 'Open': 10, 'High': 20}],
-                                    index=['2019-01-11', '2019-01-12'])
-        # 如果不指定行索引index DataFrame会自动加上行索引
-        print(df_dict_list)
-        """
-                    Close  High  Open
-        2019-01-11      1   NaN     2
-        2019-01-12      5  20.0    10
-        """
+    df_dict_list = pd.DataFrame([{'Close': 1, 'Open': 2}, {'Close': 5, 'Open': 10, 'High': 20}],
+                                index=['2019-01-11', '2019-01-12'])
+    # 如果不指定行索引index DataFrame会自动加上行索引
+    print(df_dict_list)
+    """
+                Close  High  Open
+    2019-01-11      1   NaN     2
+    2019-01-12      5  20.0    10
+    """
+    # 创建被访问DataFrame对象
+    series_data = {'Close': pd.Series([10.51, 10.52, 10.53, 10.54],
+                                      index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14']),
+                   'Open': pd.Series([12.31, 12.32, 12.33, 12.34],
+                                     index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])}
+    df_access = pd.DataFrame(series_data)
+    print(df_access)
+    """
+                Close   Open
+    2019-01-11  10.51  12.31
+    2019-01-12  10.52  12.32
+    2019-01-13  10.53  12.33
+    2019-01-14  10.54  12.34
+    """
 
-    if True:
-        # 创建被访问DataFrame对象
-        series_data = {'Close': pd.Series([10.51, 10.52, 10.53, 10.54],
-                                          index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14']),
-                       'Open': pd.Series([12.31, 12.32, 12.33, 12.34],
-                                         index=['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'])}
-        df_access = pd.DataFrame(series_data)
-        print(df_access)
-        """
-                    Close   Open
-        2019-01-11  10.51  12.31
-        2019-01-12  10.52  12.32
-        2019-01-13  10.53  12.33
-        2019-01-14  10.54  12.34
-        """
+    # DataFrame的访问
+    print("***********************访问全部元素 某行/列元素*******************")
+    # 访问DataFrame全部的行索引
+    print(df_access.index)
+    # Index(['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='object')
 
-        # DataFrame的访问
-        print("***********************访问全部元素 某行/列元素*******************")
-        # 访问DataFrame全部的行索引
-        print(df_access.index)
-        # Index(['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='object')
+    # 访问DataFrame全部的列索引
+    print(df_access.columns)
+    # Index(['Close', 'Open'], dtype='object')
 
-        # 访问DataFrame全部的列索引
-        print(df_access.columns)
-        # Index(['Close', 'Open'], dtype='object')
+    # 访问DataFrame全部的行和列索引
+    print(df_access.axes)
+    # [Index(['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='object'), Index(['Close', 'Open'], dtype='object')]
 
-        # 访问DataFrame全部的行和列索引
-        print(df_access.axes)
-        # [Index(['2019-01-11', '2019-01-12', '2019-01-13', '2019-01-14'], dtype='object'), Index(['Close', 'Open'], dtype='object')]
+    # 访问DataFrame全部元素数值
+    print(df_access.values)
+    """
+    [[10.51 12.31]
+     [10.52 12.32]
+     [10.53 12.33]
+     [10.54 12.34]]
+    """
 
-        # 访问DataFrame全部元素数值
-        print(df_access.values)
-        """
-        [[10.51 12.31]
-         [10.52 12.32]
-         [10.53 12.33]
-         [10.54 12.34]]
-        """
+    # 访问某列内容
+    print(df_access['Open'])
+    print(df_access.Open)
+    """
+    2019-01-11    12.31
+    2019-01-12    12.32
+    2019-01-13    12.33
+    2019-01-14    12.34
+    Name: Open, dtype: float64        
+    """
+    print(type(df_access['Open']))  # 查看列类型 
+    # <class 'pandas.core.series.Series'>
 
-        # 访问某列内容
-        print(df_access['Open'])
-        print(df_access.Open)
-        """
-        2019-01-11    12.31
-        2019-01-12    12.32
-        2019-01-13    12.33
-        2019-01-14    12.34
-        Name: Open, dtype: float64        
-        """
-        print(type(df_access['Open']))  # 查看列类型 
-        # <class 'pandas.core.series.Series'>
+    # 访问某一行内容
+    print(df_access[0:1])
+    """
+                Close   Open
+    2019-01-11  10.51  12.31    
+    """
+    print(type(df_access[0:1]))  # 查看行类型 
+    # <class 'pandas.core.frame.DataFrame'>
 
-        # 访问某一行内容
-        print(df_access[0:1])
-        """
-                    Close   Open
-        2019-01-11  10.51  12.31    
-        """
-        print(type(df_access[0:1]))  # 查看行类型 
-        # <class 'pandas.core.frame.DataFrame'>
+    print("***************************DataFrame.iloc***************************")
+    # 选取了'2019-01-11'行对应的'Close','Open'这两列的元素内容
+    print(df_access.loc[['2019-01-11', ], ['Close', 'Open']])
+    """
+                Close   Open
+    2019-01-11  10.51  12.31
+    """
 
-        print("***************************DataFrame.iloc***************************")
-        # 选取了'2019-01-11'行对应的'Close','Open'这两列的元素内容
-        print(df_access.loc[['2019-01-11', ], ['Close', 'Open']])
-        """
-                    Close   Open
-        2019-01-11  10.51  12.31
-        """
+    # 选取了所有的行以及列索引为'Close','Open'的元素内容
+    print(df_access.loc[:, ['Close', 'Open']])
+    """
+                Close   Open
+    2019-01-11  10.51  12.31
+    2019-01-12  10.52  12.32
+    2019-01-13  10.53  12.33
+    2019-01-14  10.54  12.34
+    """
 
-        # 选取了所有的行以及列索引为'Close','Open'的元素内容
-        print(df_access.loc[:, ['Close', 'Open']])
-        """
-                    Close   Open
-        2019-01-11  10.51  12.31
-        2019-01-12  10.52  12.32
-        2019-01-13  10.53  12.33
-        2019-01-14  10.54  12.34
-        """
+    # 访问到'2019-01-11'这行的元素
+    print(df_access.loc['2019-01-11'])
+    """
+    Close    10.51
+    Open     12.31
+    Name: 2019-01-11, dtype: float64
+    """
 
-        # 访问到'2019-01-11'这行的元素
-        print(df_access.loc['2019-01-11'])
-        """
-        Close    10.51
-        Open     12.31
-        Name: 2019-01-11, dtype: float64
-        """
+    # 选取了前两行，第一列的元素。
+    print(df_access.iloc[0:2, 0:1])
+    """
+                Close
+    2019-01-11  10.51
+    2019-01-12  10.52
+    """
+    # 选取了前两行，所有列的元素
+    print(df_access.iloc[0:2])
+    """
+                Close   Open
+    2019-01-11  10.51  12.31
+    2019-01-12  10.52  12.32
+    """
+    # 除了指定某个范围方式选取外，还可自由选取行和列的位置所对应的数据元素，访问第0行和第2行，第一列和第二列的元素
+    print(df_access.iloc[[0, 2], [0, 1]])
+    """
+                Close   Open
+    2019-01-11  10.51  12.31
+    2019-01-13  10.53  12.33
+    """
+    # 采用混合标签和位置的方式访问元素 从'Open'列索引中获取第0个和第2个元素
+    # print(df_access.ix[[0, 2], ['Open']])
+    """
+                 Open
+    2019-01-11  12.31
+    2019-01-13  12.33
+    """
 
-        # 选取了前两行，第一列的元素。
-        print(df_access.iloc[0:2, 0:1])
-        """
-                    Close
-        2019-01-11  10.51
-        2019-01-12  10.52
-        """
-        # 选取了前两行，所有列的元素
-        print(df_access.iloc[0:2])
-        """
-                    Close   Open
-        2019-01-11  10.51  12.31
-        2019-01-12  10.52  12.32
-        """
-        # 除了指定某个范围方式选取外，还可自由选取行和列的位置所对应的数据元素，访问第0行和第2行，第一列和第二列的元素
-        print(df_access.iloc[[0, 2], [0, 1]])
-        """
-                    Close   Open
-        2019-01-11  10.51  12.31
-        2019-01-13  10.53  12.33
-        """
-        # 采用混合标签和位置的方式访问元素 从'Open'列索引中获取第0个和第2个元素
-        # print(df_access.ix[[0, 2], ['Open']])
-        """
-                     Open
-        2019-01-11  12.31
-        2019-01-13  12.33
-        """
+    print(df_access.index[[0, 2]])
+    # Index(['2019-01-11', '2019-01-13'], dtype='object')
+    print(df_access.loc[df_access.index[[0, 2]], ['Open']])
+    """
+                 Open
+    2019-01-11  12.31
+    2019-01-13  12.33
+    """
 
-        print(df_access.index[[0, 2]])
-        # Index(['2019-01-11', '2019-01-13'], dtype='object')
-        print(df_access.loc[df_access.index[[0, 2]], ['Open']])
-        """
-                     Open
-        2019-01-11  12.31
-        2019-01-13  12.33
-        """
+    print(df_access.columns.get_indexer(['Open']))  # [1]
+    print(df_access.columns.get_loc('Open'))  # 1
+    print(df_access.iloc[[0, 2], df_access.columns.get_indexer(['Open'])])
+    """
+                 Open
+    2019-01-11  12.31
+    2019-01-13  12.33
+    """
 
-        print(df_access.columns.get_indexer(['Open']))  # [1]
-        print(df_access.columns.get_loc('Open'))  # 1
-        print(df_access.iloc[[0, 2], df_access.columns.get_indexer(['Open'])])
-        """
-                     Open
-        2019-01-11  12.31
-        2019-01-13  12.33
-        """
+    print(df_access.index.get_loc('2019-01-12'))  # 1
 
-        print(df_access.index.get_loc('2019-01-12'))  # 1
+    print("***************************条件表达式访问元素***************************")
 
-        print("***************************条件表达式访问元素***************************")
+    print(df_access.Open > df_access.Open.mean())
+    """
+    2019-01-11    False
+    2019-01-12    False
+    2019-01-13     True
+    2019-01-14     True
+    Name: Open, dtype: bool
+    """
 
-        print(df_access.Open > df_access.Open.mean())
-        """
-        2019-01-11    False
-        2019-01-12    False
-        2019-01-13     True
-        2019-01-14     True
-        Name: Open, dtype: bool
-        """
+    print(df_access[df_access.Open > df_access.Open.mean()])
+    """
+                Close   Open
+    2019-01-13  10.53  12.33
+    2019-01-14  10.54  12.34
+    """
+    print(df_access.loc[df_access.Open > df_access.Open.mean(), 'Close'])
+    """
+    2019-01-13    10.53
+    2019-01-14    10.54
+    Name: Close, dtype: float64
+    """
 
-        print(df_access[df_access.Open > df_access.Open.mean()])
-        """
-                    Close   Open
-        2019-01-13  10.53  12.33
-        2019-01-14  10.54  12.34
-        """
-        print(df_access.loc[df_access.Open > df_access.Open.mean(), 'Close'])
-        """
-        2019-01-13    10.53
-        2019-01-14    10.54
-        Name: Close, dtype: float64
-        """
 
 # 4.4 Python Pandas 时间序列的生成方法
-if True:
+def pd_code3():
     # Python datetime模块的使用
     from datetime import date, time, datetime, timedelta
 
@@ -730,9 +723,10 @@ if True:
     """
     print("*********************\n")
 
+
 # 4.5 DataFrame规整化处理
 # 4.6 DataFrame的高效遍历
-if True:
+def pd_code4():
     print("########## deal with data #####################################################")
     np.random.seed(1)  # 设置相同的seed 每次生成的随机数相同 便于调试
     # 数据data：正态分布随机数组——close
@@ -1019,14 +1013,12 @@ if True:
 
     print("########## loop compare#####################################################")
 
-
     # for in遍历方式
     def forin_looping(df):
         df = df.assign(pct_change=0)  # 采用assign新增一列
         for i in np.arange(0, df.shape[0]):
             df.iloc[i, df.columns.get_loc('pct_change')] = (df.iloc[i]['high'] - df.iloc[i]['low']) / df.iloc[i]['open']
         return df
-
 
     # print(forin_looping(df_concat)[0:5])
     """
@@ -1038,14 +1030,12 @@ if True:
     2010-01-06   7.70  10.87  10.87  7.70  178237    0.291628
     """
 
-
     # iterrows()遍历方式
     def iterrows_loopiter(df):
         df = df.assign(pct_change=0)  # 采用assign新增一列
         for index, row in df.iterrows():
             df.loc[index, 'pct_change'] = (row['high'] - row['low']) / row['open']
         return df
-
 
     # print(iterrows_loopiter(df_concat)[0:5])
     """
@@ -1077,31 +1067,25 @@ if True:
         # 引用于2.6.2小节
         from timeit_test import timeit_test
 
-
         @timeit_test(number=10, repeat=1)
         def forin_test():
             forin_looping(df_concat)
-
 
         @timeit_test(number=10, repeat=1)
         def iterloop_test():
             iterrows_loopiter(df_concat)
 
-
         @timeit_test(number=10, repeat=1)
         def apply_test():
             df_concat['pct_change'] = df_concat.apply(lambda row: ((row['high'] - row['low']) / row['open']), axis=1)
-
 
         @timeit_test(number=10, repeat=1)
         def series_test():
             df_concat['pct_change'] = (df_concat['high'] - df_concat['low']) / df_concat['open']
 
-
         @timeit_test(number=10, repeat=1)
         def ndarray_test():
             df_concat['pct_change'] = (df_concat['high'].values - df_concat['low'].values) / df_concat['open'].values
-
 
         forin_test()  # Time of 0 used: 8.462902736
         iterloop_test()  # Time of 0 used: 4.0023713690000005
@@ -1109,8 +1093,9 @@ if True:
         series_test()  # Time of 0 used: 0.0036549980000000204
         ndarray_test()  # Time of 0 used: 0.0018982859999994162
 
+
 # 4.7 DataFrame存储和加载
-if True:
+def pd_code5():
     df_concat.to_csv('table-stock.csv', columns=df_concat.columns, index=True)
 
     df_csvload = pd.read_csv('table-stock.csv', parse_dates=True, index_col=0, encoding='gb2312')
@@ -1125,3 +1110,11 @@ if True:
     2010-01-06   7.70  10.87  10.87  7.70  178237    0.291628
     """
     print(df_csvload.dtypes)
+
+
+np_array()
+pd_code1()
+# pd_code2()
+# pd_code3()
+# pd_code4()
+# pd_code5()
