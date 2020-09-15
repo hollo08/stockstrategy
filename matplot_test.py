@@ -237,7 +237,7 @@ def mat_test4():  # 绘制成交量条形图
     # pandas生成时间序列
     date_index = pd.date_range('2019-01-01', freq='D', periods=10)
     # 分别模拟生成涨跌时的成交量数据
-    red_bar = [1000, 0, 0, 0, 879, 986, 213, 0, 0, 0]
+    red_bar = [1000, 100, 0, 0, 879, 986, 213, 0, 0, 0]
     green_bar = [0, 200, 599, 567, 0, 0, 0, 234, 998, 489]
     # 绘制条形图
     ax.bar(date_index, red_bar, facecolor='red')
@@ -257,7 +257,9 @@ def mat_test5():  # 绘制直方图
     # 在Figure对象中创建一个Axes对象，每个Axes对象即为一个绘图区域
     ax = fig.add_subplot(111)
     # 绘制直方图
-    ax.hist(np.random.normal(loc=0, scale=1, size=1000), bins=50, density=False, color='b')
+    a = np.array('[1,2,3,45,3,4,5,6,7,2,1,3,5,6,12,98,6,5,4,3,23,2,4,33,5,6,7,8,9,6,19]')
+    ax.hist(np.random.normal(loc=0, scale=1, size=100), bins=50, density=False, color='b')
+    print(a)
     # 设置轴标签
     ax.set_xlabel(u'样本值', fontsize=15)
     ax.set_ylabel(u'频数', fontsize=15)
@@ -307,6 +309,7 @@ def mat_test7():  # 绘制K线图B
     highs = [2362.94, 2308.38, 2345.92, 2363.8, 2382.48, 2383.76, 2391.82, 2421.15, 2440.38, 2441.73]
     # 使用zip方法生成数据列表
     ohlc = list(zip(np.arange(0, 10), opens, closes, highs, lows))
+    print(np.arange(0, 10))
     mpf.candlestick_ochl(ax, ohlc, width=0.5, colorup='r', colordown='g', alpha=1.0)
     # pandas生成时间序列
     date_index = pd.date_range('2019-01-01', freq='D', periods=10)
@@ -349,6 +352,7 @@ def mat_test9():
     ax1 = fig.add_subplot(211)  # 子图以2行1列排布，当前创建的第一个Axes对象
     ax2 = fig.add_subplot(212)  # 创建另一个Axes对象
     ax1.plot(np.arange(100), np.random.randint(0, 10, 100), label=u"0-10随机数", ls='-', c='r', lw=1)
+    print(np.arange(100))
     ax2.plot(np.arange(100), np.random.randint(10, 20, 100), label=u"10-20随机数", ls='-', c='y', lw=1)
     plt.show()
 
@@ -423,11 +427,11 @@ ax5 = plt.subplot2grid((3,3), (2,1))
 """
 #mat_test1()
 #mat_test2()
-mat_test3()
+#mat_test3()
 #mat_test4()
-# mat_test5()
-# mat_test6()
-# mat_test7()
-# mat_test8()
-# mat_test9()
-# mat_test10()
+#mat_test5()
+#mat_test6()
+#mat_test7()
+#mat_test8()
+#mat_test9()
+mat_test10()
