@@ -5,15 +5,14 @@
 import matplotlib.pyplot as plt
 import mpl_finance as mpf  # 替换 import matplotlib.finance as mpf
 import numpy as np
-import pandas_test as pd
-
+import pandas as pd
 # 正常显示画图时出现的中文和负号
 from pylab import mpl
-mpl.rcParams['font.sans-serif']=['SimHei']
-mpl.rcParams['axes.unicode_minus']=False
+mpl.rcParams['font.sans-serif'] = ['SimHei']
+mpl.rcParams['axes.unicode_minus'] = False
 
 # 5.1 两种绘图方式的区分
-if True:
+def mat_test1():
     # 函数式绘图
     # 创建图形并设置大小
     plt.figure(figsize=(12, 8))
@@ -98,8 +97,7 @@ if True:
     # 显示图形
     plt.show()
 
-if True:
-
+def mat_test2():
     # 对象式绘图
     # pyplot模块中的figure()函数创建名为fig的Figure对象
     fig = plt.figure(figsize=(12, 8))
@@ -133,7 +131,7 @@ if True:
         # 设置轴标签
         ax_aux.set_ylabel('Y 轴-辅助', fontsize=15)
 
-    if False:
+    if True:
         # 添加sin()的最高点注释
         ax.annotate(u"最高点",
                     xy=(np.pi / 2, 1),  # 箭头指向点的坐标
@@ -159,7 +157,7 @@ if True:
                         'connectionstyle': 'arc3',
                         'color': 'r'
                     })
-    if False:
+    if True:
         # 添加sin()的水平/垂直参考线
         ax.axhline(y=min(y), c='blue', ls=':', lw=2)
         ax.axvline(x=np.pi * 3 / 2, c='blue', ls='-.', lw=2)
@@ -203,13 +201,14 @@ if True:
 
 # 5.2 常用图表类型的绘制
 
-if False:  # 绘制标注点样式
+def mat_test3():  # 绘制标注点样式
 
     fig = plt.figure(figsize=(12, 8))
     # 在Figure对象中创建一个Axes对象，每个Axes对象即为一个绘图区域
     ax = fig.add_subplot(111)
     x = np.arange(10, 20)
     y = np.around(np.log(x), 2)
+    print(y)
     ax.plot(x, y, marker='o')
 
     ax.annotate(u"样式1", xy=(x[1], y[1]), xytext=(80, 10), textcoords='offset points',
@@ -229,7 +228,7 @@ if False:  # 绘制标注点样式
     # 显示图形
     plt.show()
 
-if False:  # 绘制成交量条形图
+def mat_test4():  # 绘制成交量条形图
     # 对象式绘图
     # pyplot模块中的figure()函数创建名为fig的Figure对象
     fig = plt.figure(figsize=(12, 8))
@@ -251,7 +250,7 @@ if False:  # 绘制成交量条形图
     # 显示图形
     plt.show()
 
-if False:  # 绘制直方图
+def mat_test5():  # 绘制直方图
     # 对象式绘图
     # pyplot模块中的figure()函数创建名为fig的Figure对象
     fig = plt.figure(figsize=(12, 8))
@@ -267,7 +266,7 @@ if False:  # 绘制直方图
     # 显示图形
     plt.show()
 
-if False:  # 绘制K线图A
+def mat_test6():  # 绘制K线图A
     # 对象式绘图
     # pyplot模块中的figure()函数创建名为fig的Figure对象
     fig = plt.figure(figsize=(12, 8))
@@ -295,7 +294,7 @@ if False:  # 绘制K线图A
     # 显示图形
     plt.show()
 
-if False:  # 绘制K线图B
+def mat_test7():  # 绘制K线图B
     # 对象式绘图
     # pyplot模块中的figure()函数创建名为fig的Figure对象
     fig = plt.figure(figsize=(12, 8))
@@ -325,7 +324,7 @@ if False:  # 绘制K线图B
     # 显示图形
     plt.show()
 
-if False:
+def mat_test8():
     # 图形对象中属性参数的调节
 
     # 单条线：
@@ -342,7 +341,7 @@ if False:
     plt.plot([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], c='g', marker='o', ls='dashed', lw=5)
     plt.show()
 
-if False:
+def mat_test9():
     np.random.seed(1)
     # add_subplot()函数
 
@@ -393,7 +392,7 @@ if False:
       <matplotlib.axes._subplots.AxesSubplot object at 0x11d33f9b0>]]
     """
 
-if False:
+def mat_test10():
     import matplotlib.gridspec as gridspec  # 分割子图
 
     fig = plt.figure(figsize=(12, 8), dpi=100, facecolor="white")  # 创建fig对象
@@ -422,3 +421,13 @@ ax3 = plt.subplot2grid((3,3), (1,2), rowspan=2)
 ax4 = plt.subplot2grid((3,3), (2,0))
 ax5 = plt.subplot2grid((3,3), (2,1))
 """
+#mat_test1()
+#mat_test2()
+mat_test3()
+#mat_test4()
+# mat_test5()
+# mat_test6()
+# mat_test7()
+# mat_test8()
+# mat_test9()
+# mat_test10()
