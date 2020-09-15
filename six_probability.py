@@ -12,7 +12,7 @@ import random
 np.random.seed(0)
 
 # 6.2 深入理解伯努利分布
-if False:
+def pro_test1():
     # 二项分布实现例程
     # 同时抛掷5枚硬币，出现正面朝上的次数——试验10次
     print(np.random.binomial(5, 0.5, 10))
@@ -33,16 +33,17 @@ if False:
 
 # 6.3 深入理解正态分布
 
-if False:
+def pro_test2():
     # 单独绘制正态分布 直方图例程
     import matplotlib.pyplot as plt
 
-    plt.hist(np.random.normal(loc=-2, scale=0.5, size=10000), bins=50, density=True, color='g')
-    plt.hist(np.random.normal(loc=0, scale=1, size=10000), bins=50, density=True, color='b')
-    plt.hist(np.random.normal(loc=2, scale=1.5, size=10000), bins=50, density=True, color='r')
+    plt.hist(np.random.normal(loc=-20, scale=10, size=10000), bins=50, density=True, color='g')
+    print(np.random.normal(loc=-20, scale=10, size=10))
+    plt.hist(np.random.normal(loc=10, scale=10, size=10000), bins=50, density=True, color='b')
+    plt.hist(np.random.normal(loc=0, scale=15, size=10000), bins=50, density=True, color='r')
     plt.show()
 
-if False:
+def pro_test3():
     # 标准正态分布转换实现
     import matplotlib.pyplot as plt
 
@@ -51,7 +52,7 @@ if False:
     plt.hist(np.random.normal(loc=0, scale=1, size=10000) * 1.5 + 2, bins=50, density=True, color='r')
     plt.show()
 
-if False:
+def pro_test4():
     # 直方图例程上增加概率密度曲线
     import matplotlib.pyplot as plt
 
@@ -60,7 +61,7 @@ if False:
              label='$\mu$=%.1f, $\sigma^2$=%.1f' % (0, 1), lw=2)  # 公式计算求得函数值
     plt.show()
 
-if False:
+def pro_test5():
     import matplotlib.pyplot as plt
     import scipy.stats
 
@@ -87,7 +88,7 @@ if False:
     plt.legend(loc=0, ncol=1)  # loc自适应、ncol列的数量
     plt.show()
 
-if False:
+def pro_test6():
     # 绘制正态分布概率密度函数曲线
     import matplotlib.pyplot as plt
     import numpy as np
@@ -121,7 +122,8 @@ if False:
     plt.xlabel('x')
     plt.ylabel('f(x)')
     # x_location = np.arange(-3.0, 4.0, 1) # x轴坐标位置 匹配 3\sigma 2\sigma 1\sigma
-    x_location = [-2.58, -1.96, -1, 0, 1, 1.96, 2.58]  #
+    x_location = [-2.58, -1.96, -1, 0, 1, 1.96, 2.58]
+    n = [-2.58, -1.96, -1, 0, 1, 1.96, 2.58]  #
     x_labels = ['$\mu-2.58\sigma$', '$\mu-1.96\sigma$', '$\mu-1\sigma$', '$\mu$', '$\mu+1\sigma$', '$\mu+1.96\sigma$',
                 '$\mu+2.58\sigma$']  # x轴坐标显示标签
     plt.xticks(x_location, x_labels, rotation=45)
@@ -136,10 +138,9 @@ if False:
     plt.legend(labels=['$\mu = 0, \sigma^2=1.0$'])
     plt.show()
 
-if False:
+def pro_test7():
     # 交易者人数
     trader = 50
-
 
     # 创建简易的市场模型
     def simpmarket(win_rate, play_cnt=1000, stock_num=9, position=0.01, commission=0.01, lever=False):
@@ -157,12 +158,10 @@ if False:
                 # 三目运算
                 # 如果lever == False 结果为真，则不加注，my_money[i] = my_money[i-1] + once_chip
                 # 如果lever == False 结果为假，则加注，my_money[i] = my_money[i-1] + once_chip*lose_count
-                my_money[i] = my_money[i - 1] + once_chip if lever == False else my_money[
-                                                                                     i - 1] + once_chip * lose_count
+                my_money[i] = my_money[i - 1] + once_chip if lever == False else my_money[i - 1] + once_chip * lose_count
                 lose_count = 1
             else:
-                my_money[i] = my_money[i - 1] - once_chip if lever == False else my_money[
-                                                                                     i - 1] - once_chip * lose_count
+                my_money[i] = my_money[i - 1] - once_chip if lever == False else my_money[i - 1] - once_chip * lose_count
                 lose_count += 1
             my_money[i] -= commission
             # print("lose",lose_count)
@@ -214,13 +213,11 @@ if False:
 
 
     # 仓位管理 手续费0.01 参加5次
-    _ = [plt.plot(np.arange(5), positmanage(play_cnt=5, stock_num=9, commission=0.01)) \
-         for _ in np.arange(0, trader)]
-    # _ = plt.hist([positmanage(play_cnt=5, stock_num=9, commission = 0)[-1] \
-    #                                                                for _ in np.arange(0, trader)], bins=30)
+    _ = [plt.plot(np.arange(5), positmanage(play_cnt=5, stock_num=9, commission=0.01)) for _ in np.arange(0, trader)]
+    #_ = plt.hist([positmanage(play_cnt=5, stock_num=9, commission = 0)[-1] for _ in np.arange(0, trader)], bins=30)
     plt.show()
 
-if False:
+def pro_test8():
     def random_walk(nsteps=1000):
 
         draws = np.random.randint(0, 2, size=nsteps)
@@ -417,3 +414,12 @@ if False:
     # draw_random_walk()
     # sim_normal_distribution()
     # simbar_random_walk()
+
+#pro_test1()
+#pro_test2()
+#pro_test3()
+#pro_test4()
+#pro_test5()
+#pro_test6()
+pro_test7()
+#pro_test8()
