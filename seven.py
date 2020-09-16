@@ -4,7 +4,7 @@
 import datetime
 import numpy as np
 import pandas_datareader.data as web
-import pandas_test as pd
+import pandas as pd
 import matplotlib.pyplot as plt
 import tushare as ts
 import baostock as bs
@@ -215,7 +215,6 @@ def ts_data_sh_h():
 
 # 设置token
 token = os.environ.get('tushare_token')
-print(token)
 pro = ts.pro_api(token)  # 初始化pro接口
 
 
@@ -466,27 +465,16 @@ def pro_daily_stock(code_val='000651.SZ', start_val='20090101', end_val='2019060
     recon_data = {'High': df_stock.high, 'Low': df_stock.low, 'Open': df_stock.open, 'Close': df_stock.close, \
                   'Volume': df_stock.vol}
     df_recon = pd.DataFrame(recon_data)
-
-    return df_recon
-
+    print(df_recon)
     """
                  High    Low   Open  Close     Volume
     Date                                             
     2009-01-05  19.80  18.40  19.60  18.69   65225.54
     2009-01-06  18.73  17.81  18.73  18.15  193336.75
-    2009-01-07  18.10  17.90  18.01  17.93   86723.22
-    2009-01-08  17.95  17.45  17.51  17.82   74000.91
-    2009-01-09  18.25  17.65  17.82  18.21   94494.54
-    ...           ...    ...    ...    ...        ...
-    2019-05-27  54.50  52.98  54.01  54.05  352294.27
-    2019-05-28  55.33  53.80  54.00  54.90  399621.73
-    2019-05-29  54.66  53.70  54.13  54.10  295262.21
-    2019-05-30  53.79  52.63  53.64  52.94  455447.77
     2019-05-31  53.53  52.17  52.90  52.31  374222.12
-
     [2361 rows x 5 columns]
     """
-
+    return df_recon
 
 def bs_k_data_stock(code_val='sz.000651', start_val='2009-01-01', end_val='2019-06-01',
                     freq_val='d', adjust_val='3'):
@@ -522,7 +510,6 @@ def bs_k_data_stock(code_val='sz.000651', start_val='2009-01-01', end_val='2019-
 
     # 登出系统
     bs.logout()
-    return df_recon
     """
                  High    Low   Open  Close     Volume
     Date                                             
@@ -540,6 +527,7 @@ def bs_k_data_stock(code_val='sz.000651', start_val='2009-01-01', end_val='2019-
 
     [2530 rows x 5 columns]
     """
+    return df_recon
 
 
 ################################### 注册JSON格式自选股票池 #####################################
@@ -624,7 +612,7 @@ def tushare_to_json():
 
 def json_to_str():
     # load: 将文件中的字符串变换为数据类型
-    with open("stock_pool.json", 'r') as load_f:
+    with open("stock_pool.json", encoding='utf-8', mode='r') as load_f:
         stock_index = json.load(load_f)
     print(stock_index)  # <class 'dict'>
     # {'指数': {'上证综指': '000001.SH', ..... '上证180': '000010.SH'}, '股票': {'平安银行': '000001.SZ', '万科A': '000002.SZ', .....}}
@@ -639,30 +627,11 @@ def json_to_str():
 
 from concurrent.futures import ThreadPoolExecutor
 from multiprocessing import Pool
-
-# 引用于2.6.2小节
-import functools, time
+from timeit_test import timeit_test
 
 
-# 定义测试代码执行时间的装饰器-三阶
-def timeit_test(number=3, repeat=3):
-    def decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            for i in range(repeat):
-                start = time.perf_counter()
-                for _ in range(number):
-                    func(*args, **kwargs)
-                elapsed = (time.perf_counter() - start)
-                print('Time of {} used: {} '.format(i, elapsed))
-
-        return wrapper
-
-    return decorator
-
-
-@timeit_test(number=1, repeat=1)
 # 获取股票数据
+@timeit_test(number=1, repeat=1)
 def get_daily_data(start='20180101', end='20190101'):
     stock_index = json_to_str()  # 读取股票池Json文件
     for code in list(stock_index['股票'].values())[0:500]:
@@ -673,10 +642,10 @@ def get_daily_data(start='20180101', end='20190101'):
             print("error code is %s" % code)
 
 
-def map_fun(code, start='20180101', end='20190101'):
+def map_fun(code, start='20190101', end='20200101'):
     try:
         df_data = pro_daily_stock(code, start, end)
-        # print("right code is %s" % code)
+        print("right code is %s" % code)
     except:
         print("error code is %s" % code)
 
@@ -716,16 +685,13 @@ if __name__ == '__main__':
     # ts_data_pro_daily()
     # ts_data_pro_ixdaily()
     # bs_data_sh()
-    print(pro_daily_stock(code_val='000651.SZ', start_val='20180601', end_val='20190601'))
-    print(bs_k_data_stock(code_val='sz.000651', start_val='2018-06-01', end_val='2019-06-01',
-                          freq_val='d', adjust_val='2'))
+    #print(pro_daily_stock(code_val='000651.SZ', start_val='20180601', end_val='20190601'))
+    #print(bs_k_data_stock(code_val='sz.000651', start_val='2018-06-01', end_val='2019-06-01', freq_val='d', adjust_val='2'))
 
-    if False:
-        # str_to_json()
-        # tushare_to_json()
-        json_to_str()
+    # str_to_json()
+    # tushare_to_json()
+    #json_to_str()
 
-    if False:
-        get_daily_data()  # Time of 0 used: 24.791494612
-        # get_daily_thread() # Time of 0 used: 41.300545103  max_workers=8
-        # get_daily_multi()  # Time of 0 used: 80.29256642700001
+    #get_daily_data()  # Time of 0 used: 24.791494612
+    #get_daily_thread() # Time of 0 used: 41.300545103  max_workers=8
+    get_daily_multi()  # Time of 0 used: 80.29256642700001

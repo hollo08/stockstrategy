@@ -2,7 +2,7 @@
 # coding=utf-8
 
 
-import pandas_test as pd
+import pandas as pd
 import tushare as ts
 import numpy as np
 import json

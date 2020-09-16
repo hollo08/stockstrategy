@@ -3,7 +3,7 @@
 
 
 import pandas_datareader.data as web
-import pandas_test as pd
+import pandas as pd
 import numpy as np
 import datetime
 import talib
