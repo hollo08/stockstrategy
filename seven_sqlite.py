@@ -142,11 +142,13 @@ def sqlite_test3():
     # 获取当前最新的股票代码
     def get_stock_code():
         codes = pro.stock_basic(exchange='', list_status='L',
-                                fields='ts_code,symbol,name,area,industry,list_date').ts_code.values
+                                fields='ts_code,symbol,name,area,industry,fullname,enname,market,exchange,curr_type,'
+                                       'list_status,list_date,list_date,is_hs').industry.values
+        #fields:https://tushare.pro/document/2?doc_id=25
         return codes
 
 
-    # print(get_stock_code())
+    print(get_stock_code())
     """
     ['000001.SZ' '000002.SZ' '000004.SZ' ... '688122.SH' '688333.SH'
      '688388.SH']
@@ -166,7 +168,7 @@ def map_fun(code, start='20190101', end='20190201', table_name='STOCK000001', co
 def stock_to_sql(table_name, con_name):
     stock_code = json_to_str()  # 读取股票池Json文件
     itr_arg = [code for code in stock_code['股票'].values()]
-    print(itr_arg)
+    #print(itr_arg)
     with ThreadPoolExecutor(max_workers=8) as executor:
         # map_fun 传入的要执行的map函数
         # itr_argn 可迭代的参数
@@ -364,4 +366,5 @@ def sqlite_test8():
 
     conn.close()
 
-sqlite_test1()
+#sqlite_test1()
+sqlite_test3()

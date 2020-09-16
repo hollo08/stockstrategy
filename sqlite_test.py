@@ -54,6 +54,6 @@ def update_date(sql):
 #drop_table('t_test')
 #update_date("UPDATE t_test set DESCRIPTION = 'None' where ID=1")
 #print_data(query_data("select * from t_test"))
-#df_gldq = pro_daily_stock('000651.SZ', '20190101', '20190201')
-#df_gldq.to_sql(name='STOCK000651',  con=conn, index=False, if_exists='replace')
+df_gldq = pro_daily_stock('000651.SZ', '20190101', '20200201')
+df_gldq.to_sql(name='STOCK000651',  con=conn, index=False, if_exists='replace')
 print_data(query_data("select * from STOCK000651"))

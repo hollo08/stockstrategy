@@ -216,6 +216,7 @@ def ts_data_sh_h():
 
 # 设置token
 token = os.environ.get('tushare_token')
+#print(token)
 pro = ts.pro_api(token)  # 初始化pro接口
 
 
