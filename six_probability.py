@@ -217,6 +217,8 @@ def pro_test7():
     #_ = plt.hist([positmanage(play_cnt=5, stock_num=9, commission = 0)[-1] for _ in np.arange(0, trader)], bins=30)
     plt.show()
 
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 def pro_test8():
     def random_walk(nsteps=1000):
 
@@ -224,6 +226,8 @@ def pro_test8():
         # print(f'random walk direction is {draws}')# random walk direction is [1 0 1 ... 0 1 0]
         steps = np.where(draws > 0, 1, -1)  # 将0转换为-1
         walk = steps.cumsum()  # 累加方式记录轨迹
+        print(steps)
+        print(walk)
         return walk
 
 
@@ -234,7 +238,8 @@ def pro_test8():
 
         # 统计漫步过程中，终点、前进和后退最大的距离
         start_y = start_x = 0
-        end_y = walk_path[-1], end_x = walk_steps - 1
+        end_y = walk_path[-1]
+        end_x = walk_steps - 1
         print('在{}次漫步中，终点的距离：{}'.format(walk_steps, end_y))
 
         max_y = walk_path.max()
@@ -259,6 +264,7 @@ def pro_test8():
         在1000次漫步中，距离超过30的索引：(array([551, 552, 553, 563, 564, 565, 567, 568, 569, 575, 576, 577, 578,... 970, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 984, 985, 986, 987, 988, 989,990, 991, 992, 993, 994, 995, 996, 997, 998, 999]),)
         '''
         x = np.linspace(0, 2000, num=2000)
+        #x = np.arange(2000)
         # y2 = np.ones(2000)*30
         # y3 = -y2
         # 绘制+-30线
@@ -347,6 +353,7 @@ def pro_test8():
         # 模拟多个随机漫步，这里生成了15组随机数
         nwalks = 15
         nsteps = 1000
+
         # 仅需要对参数size稍作修改
         draws = np.random.randint(0, 2, size=(nwalks, nsteps))
         steps = np.where(draws > 0, 1, -1)
@@ -411,9 +418,9 @@ def pro_test8():
         plt.title(u"模拟随机漫步")
         plt.show()
 
-    # draw_random_walk()
-    # sim_normal_distribution()
-    # simbar_random_walk()
+    #draw_random_walk()
+    #sim_normal_distribution()
+    simbar_random_walk()
 
 #pro_test1()
 #pro_test2()
@@ -421,5 +428,5 @@ def pro_test8():
 #pro_test4()
 #pro_test5()
 #pro_test6()
-pro_test7()
-#pro_test8()
+#pro_test7()
+pro_test8()
