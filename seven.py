@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import tushare as ts
 import baostock as bs
 import os
+from timeit_test import timeit_test
 
 pd.set_option('display.expand_frame_repr', False)  # False不允许换行
 pd.set_option('display.max_rows', 10)  # 显示的最大行数
@@ -456,6 +457,7 @@ def bs_data_sh():
 
 def pro_daily_stock(code_val='000651.SZ', start_val='20090101', end_val='20190601'):
     # 获取股票日线行情数据
+
     df_stock = pro.daily(ts_code=code_val, start_date=start_val, end_date=end_val)
     df_stock.trade_date = pd.DatetimeIndex(df_stock.trade_date)
     df_stock.set_index("trade_date", drop=True, inplace=True)
@@ -465,7 +467,7 @@ def pro_daily_stock(code_val='000651.SZ', start_val='20090101', end_val='2019060
     recon_data = {'High': df_stock.high, 'Low': df_stock.low, 'Open': df_stock.open, 'Close': df_stock.close, \
                   'Volume': df_stock.vol}
     df_recon = pd.DataFrame(recon_data)
-    print(df_recon)
+    #print(df_recon)
     """
                  High    Low   Open  Close     Volume
     Date                                             
@@ -627,7 +629,6 @@ def json_to_str():
 
 from concurrent.futures import ThreadPoolExecutor
 from multiprocessing import Pool
-from timeit_test import timeit_test
 
 
 # 获取股票数据
