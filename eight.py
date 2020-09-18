@@ -676,93 +676,77 @@ def talib_speed_example():
     end_p = time.perf_counter()
     print("Time pandas：", end_p - start_p)  # Pandas time consuming
 
+def draw_mult_chart():
+    layout_dict = {'figsize': (12, 6),
+                   'nrows': 4,
+                   'ncols': 1,
+                   'left': 0.07,
+                   'bottom': 0.15,
+                   'right': 0.99,
+                   'top': 0.96,
+                   'wspace': None,
+                   'hspace': 0,
+                   'height_ratios': [3.5, 1, 1, 1],
+                   'subplots': ['kgraph', 'volgraph', 'kdjgraph', 'macdgraph']}
 
+    subplots_dict = {'graph_fst': {'graph_name': 'kgraph',
+                                   'graph_type': {'ochl': None,
+                                                  'sma': [20, 30, 60, ]
+                                                  },
+                                   'title': u"000651 格力电器-日K线",
+                                   'ylabel': u"价格",
+                                   'xticks': 15,
+                                   'legend': 'best'
+                                   },
+                     'graph_sec': {'graph_name': 'volgraph',
+                                   'graph_type': {'vol': None
+                                                  },
+                                   'ylabel': u"成交量",
+                                   'xticks': 15,
+                                   },
+                     'graph_thd': {'graph_name': 'kdjgraph',
+                                   'graph_type': {'kdj': None
+                                                  },
+                                   'ylabel': u"KDJ",
+                                   'xticks': 15,
+                                   'legend': 'best',
+                                   },
+                     'graph_fth': {'graph_name': 'macdgraph',
+                                   'graph_type': {'macd': None
+                                                  },
+                                   'ylabel': u"MACD",
+                                   'xlabel': u"日期",
+                                   'xticks': 15,
+                                   'legend': 'best',
+                                   'xticklabels': '%Y-%m-%d'  # strftime
+                                   },
+                     }
+
+    draw_stock = MultiGraphIf(**layout_dict)
+    draw_stock.graph_run(df_stockload, **subplots_dict)
 
 
 
 if __name__ == '__main__':
-    df_stockload = pro_daily_stock('600795.SH', '20200601', '20200909')
+    df_stockload = pro_daily_stock('600795.SH', '20190601', '20200507')
     #df_stockload = bs_k_data_stock("sz.000651", '2018-06-01', '2019-06-01')  # 采用未复权数据
     print(df_stockload.head(10))
 
     # basic
-    if False:
-        draw_kline_chart(df_stockload.copy(deep=True))  # K线图
-    if False:
-        draw_volume_chart(df_stockload.copy(deep=True))  # 成交量图
-    if False:
-        draw_sma_chart(df_stockload.copy(deep=True))  # 移动平均线图
-    if False:
-        draw_kdj_chart(df_stockload.copy(deep=True))  # KDJ图
-    if False:
-        draw_kdj1_chart(df_stockload.copy(deep=True))  # KDJ图-for in
-    if False:
-        draw_macd_chart(df_stockload.copy(deep=True))  # MACD图
-    # advance
-    if False:
-        draw_cross_annotate(df_stockload.copy(deep=True))  # 均线交叉提示
-    if False:
-        draw_gap_annotate(df_stockload.copy(deep=True))  # 跳空缺口提示
-    if False:
-        draw_kweek_chart(df_stockload.copy(deep=True))  # 重采样周K线图形
-    if False:
-        draw_fibonacci_chart(df_stockload.copy(deep=True))  # 黄金分割率绘制支撑与阻力线
-    if False:
-        draw_tasma_chart(df_stockload.copy(deep=True))  # talib SMA 普通移动平均线
-    if False:
-        draw_tamacd_chart(df_stockload.copy(deep=True))  # talib MACD
-    if False:
-        draw_takdj_chart(df_stockload.copy(deep=True))  # talib KDJ
-    if True:
-        draw_takpattern_annotate(df_stockload.copy(deep=True))  # talib K-line pattern标注
-    if False:
-        talib_speed_example()  # 对比效率上的差别
+    #draw_kline_chart(df_stockload.copy(deep=True))  # K线图
+    #draw_volume_chart(df_stockload.copy(deep=True))  # 成交量图
+    #draw_sma_chart(df_stockload.copy(deep=True))  # 移动平均线图
+    #draw_macd_chart(df_stockload.copy(deep=True))  # MACD图
+    draw_kdj_chart(df_stockload.copy(deep=True))  # KDJ图
+    #draw_kdj1_chart(df_stockload.copy(deep=True))  # KDJ图-for in
+    #draw_cross_annotate(df_stockload.copy(deep=True))  # 均线交叉提示
+    #draw_gap_annotate(df_stockload.copy(deep=True))  # 跳空缺口提示
+    #draw_kweek_chart(df_stockload.copy(deep=True))  # 重采样周K线图形
+    #draw_fibonacci_chart(df_stockload.copy(deep=True))  # 黄金分割率绘制支撑与阻力线
+    #draw_tasma_chart(df_stockload.copy(deep=True))  # talib SMA 普通移动平均线
+    #draw_tamacd_chart(df_stockload.copy(deep=True))  # talib MACD
+    #draw_takdj_chart(df_stockload.copy(deep=True))  # talib KDJ
+    #draw_takpattern_annotate(df_stockload.copy(deep=True))  # talib K-line pattern标注
+    #talib_speed_example()  # 对比效率上的差别
+    #draw_mult_chart()
 
-    if True:
-        layout_dict = {'figsize': (12, 6),
-                       'nrows': 4,
-                       'ncols': 1,
-                       'left': 0.07,
-                       'bottom': 0.15,
-                       'right': 0.99,
-                       'top': 0.96,
-                       'wspace': None,
-                       'hspace': 0,
-                       'height_ratios': [3.5, 1, 1, 1],
-                       'subplots': ['kgraph', 'volgraph', 'kdjgraph', 'macdgraph']}
-
-        subplots_dict = {'graph_fst': {'graph_name': 'kgraph',
-                                       'graph_type': {'ochl': None,
-                                                      'sma': [20, 30, 60, ]
-                                                      },
-                                       'title': u"000651 格力电器-日K线",
-                                       'ylabel': u"价格",
-                                       'xticks': 15,
-                                       'legend': 'best'
-                                       },
-                         'graph_sec': {'graph_name': 'volgraph',
-                                       'graph_type': {'vol': None
-                                                      },
-                                       'ylabel': u"成交量",
-                                       'xticks': 15,
-                                       },
-                         'graph_thd': {'graph_name': 'kdjgraph',
-                                       'graph_type': {'kdj': None
-                                                      },
-                                       'ylabel': u"KDJ",
-                                       'xticks': 15,
-                                       'legend': 'best',
-                                       },
-                         'graph_fth': {'graph_name': 'macdgraph',
-                                       'graph_type': {'macd': None
-                                                      },
-                                       'ylabel': u"MACD",
-                                       'xlabel': u"日期",
-                                       'xticks': 15,
-                                       'legend': 'best',
-                                       'xticklabels': '%Y-%m-%d'  # strftime
-                                       },
-                         }
-
-        draw_stock = MultiGraphIf(**layout_dict)
-        draw_stock.graph_run(df_stockload, **subplots_dict)

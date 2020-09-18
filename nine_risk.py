@@ -17,7 +17,7 @@ import matplotlib.gridspec as gridspec  # 分割子图
 
 # use other chapters program
 from seven import bs_k_data_stock, pro_daily_stock, json_to_str
-from eight import DefTypesPool, MplTypesDraw, MplVisualIf
+from MplVisualIf import DefTypesPool, MplTypesDraw, MplVisualIf
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号

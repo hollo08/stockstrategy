@@ -28,8 +28,8 @@ pro = ts.pro_api(token)  # 初始化pro接口
 
 table_name = 'stock_day_data'
 
-start = '20200902'
-end = '20200916'
+start = '20120916'
+end = '20200915'
 def to_sql(ts_code):
     print(ts_code)
     data = pro.daily(ts_code=ts_code, start_date=start, end_date=end)
@@ -42,11 +42,16 @@ def mult_thread(df, count=8):
         executor.map(to_sql, df['ts_code'].values)
 
 if __name__ == '__main__':
-    df = read_data()
+    #获取所有股票代码
     #df = get_data()
     #write_data(df, name='stock_basic')
-    #print(df.iloc[1, df.columns.get_loc('symbol')])
+
+
+    #获取每日股票价格信息
+    df = read_data()
     mult_thread(df)
+
+    #print(df.iloc[1, df.columns.get_loc('symbol')])
 
     # for idx, ts_code in enumerate(df['ts_code'].values):
     #     print(idx)

@@ -1111,10 +1111,22 @@ def pd_code5():
     """
     print(df_csvload.dtypes)
 
+def pd_rolling():
+    df = pd.DataFrame(np.random.randint(1, 10, (7, 4)),
+                      index=pd.date_range('1/1/2020', periods=7),
+                      columns=['A', 'B', 'C', 'D'])
+    print(df)
+    df1 = df.rolling(window=3).mean()
+    print(df["A"].mean())
+    print(df1)
+    df2 = df.rolling(window=3, min_periods=1).mean()
+    print(df2)
 
-np_array()
-pd_code1()
-# pd_code2()
-# pd_code3()
-# pd_code4()
-# pd_code5()
+print(np.arange(1, 7))
+#np_array()
+#pd_code1()
+#pd_code2()
+#pd_code3()
+#pd_code4()
+#pd_code5()
+pd_rolling()

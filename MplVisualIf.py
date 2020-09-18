@@ -158,7 +158,7 @@ class MplVisualIf(MplTypesDraw):  # matplotlib Visualization interface
         self.index = kwargs['index']
         self.fig_creat(**kwargs)
         for path, val in kwargs['draw_kind'].items():
-            print(u"输出[%s]可视化图表:" % path)
+            print(u"输出[%s]可视化图表" % path)
             view_function = self.mpl.route_output(path)
             view_function(self.index, val, self.graph)
         self.fig_config(**kwargs)
