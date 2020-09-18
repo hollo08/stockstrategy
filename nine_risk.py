@@ -29,10 +29,7 @@ pd.set_option('display.max_rows', 10)  # 显示的最大行数
 pd.set_option('display.max_columns', 10)  # 显示的最大列数
 pd.set_option('precision', 2)  # 显示小数点后的位数
 
-###########################################  decorator   ############################################################
-
 app = MplVisualIf()
-
 
 def get_trade_signal(stock_dat):
     df_csvload_trade = pd.read_csv('GLDQ000651.csv', index_col=None, parse_dates=[2, 3], encoding='gb2312')
