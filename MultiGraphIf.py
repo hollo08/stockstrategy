@@ -210,7 +210,6 @@ class MultiGraphIf(MplTypesDraw):
     @app.route_types(u"trade")
     def trade_graph(stock_dat, sub_graph, para_dat):
         # 交易获利/亏损区间可视化
-
         type_dict = {'signal': stock_dat.Signal,
                      'jdval': stock_dat.Close,
                      'va': 'top',
