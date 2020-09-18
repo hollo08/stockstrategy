@@ -1,165 +1,134 @@
-import mpl_finance as mpf  # 替换 import matplotlib.finance as mpf
-import numpy as np
+from MplVisualIf import MplTypesDraw, DefTypesPool
+import matplotlib.gridspec as gridspec  # 分割子图
 import matplotlib.pyplot as plt
+import numpy as np
 
+class MultiGraphIf(MplTypesDraw):
+    app = DefTypesPool()
 
-class DefTypesPool():
+    ##########################行情分析界面###############################
+    @app.route_types(u"ochl")
+    def ochl_graph(stock_dat, sub_graph, df_dat=None):  # prepare data
+        type_dict = {'Open': stock_dat.Open,
+                     'Close': stock_dat.Close,
+                     'High': stock_dat.High,
+                     'Low': stock_dat.Low
+                     }
+        view_function = MplTypesDraw.mpl.route_output(u"ochl")
+        view_function(stock_dat.index, type_dict, sub_graph)
 
-    def __init__(self):
-        self.routes = {}
+    @app.route_types(u"sma")
+    def sma_graph(stock_dat, sub_graph, periods):  # prepare data
+        for val in periods:
+            type_dict = {'SMA' + str(val): stock_dat.Close.rolling(window=val).mean()}
+            view_function = MplTypesDraw.mpl.route_output(u"line")
+            view_function(stock_dat.index, type_dict, sub_graph)
 
-    def route_types(self, types_str):
-        def decorator(f):
-            self.routes[types_str] = f
-            return f
+    @app.route_types(u"vol")
+    def vol_graph(stock_dat, sub_graph, df_dat=None):  # prepare data
+        type_dict = {'bar_red': np.where(stock_dat.Open < stock_dat.Close, stock_dat.Volume, 0),  # 绘制BAR>0 柱状图
+                     'bar_green': np.where(stock_dat.Open > stock_dat.Close, stock_dat.Volume, 0)  # 绘制BAR<0 柱状图
+                     }
+        view_function = MplTypesDraw.mpl.route_output(u"bar")
+        view_function(stock_dat.index, type_dict, sub_graph)
 
-        return decorator
+    @app.route_types(u"macd")
+    def macd_graph(stock_dat, sub_graph, df_dat=None):  # prepare data
 
-    def route_output(self, path):
-        # print(u"output [%s] function:" % path)
-        function_val = self.routes.get(path)
-        if function_val:
-            return function_val
-        else:
-            raise ValueError('Route "{}"" has not been registered'.format(path))
+        macd_dif = stock_dat['Close'].ewm(span=12, adjust=False).mean() - stock_dat['Close'].ewm(span=26,
+                                                                                                 adjust=False).mean()
+        macd_dea = macd_dif.ewm(span=9, adjust=False).mean()
+        macd_bar = 2 * (macd_dif - macd_dea)
 
+        type_dict = {'bar_red': np.where(macd_bar > 0, macd_bar, 0),  # 绘制BAR>0 柱状图
+                     'bar_green': np.where(macd_bar < 0, macd_bar, 0)  # 绘制BAR<0 柱状图
+                     }
+        view_function = MplTypesDraw.mpl.route_output(u"bar")
+        view_function(stock_dat.index, type_dict, sub_graph)
 
-class MplTypesDraw():
-    mpl = DefTypesPool()
+        type_dict = {'macd dif': macd_dif,
+                     'macd dea': macd_dea
+                     }
+        view_function = MplTypesDraw.mpl.route_output(u"line")
+        view_function(stock_dat.index, type_dict, sub_graph)
 
-    @mpl.route_types(u"line")
-    def line_plot(df_index, df_dat, graph):
-        # 绘制line图
-        for key, val in df_dat.items():
-            graph.plot(np.arange(0, len(val)), val, label=key, lw=1.0)
+    @app.route_types(u"kdj")
+    def kdj_graph(stock_dat, sub_graph, df_dat=None):  # prepare data
 
-    @mpl.route_types(u"ochl")
-    def ochl_plot(df_index, df_dat, graph):
-        # 绘制ochl图——Kline
-        # 方案一
-        mpf.candlestick2_ochl(graph, df_dat['Open'], df_dat['Close'], df_dat['High'], df_dat['Low'], width=0.5,
-                              colorup='r', colordown='g')  # 绘制K线走势
-        # 方案二
-        ohlc = list(zip(np.arange(0, len(df_index)), df_dat['Open'], df_dat['Close'], df_dat['High'],
-                        df_dat['Low']))  # 使用zip方法生成数据列表
-        mpf.candlestick_ochl(graph, ohlc, width=0.2, colorup='r', colordown='g', alpha=1.0)  # 绘制K线走势
+        low_list = stock_dat['Low'].rolling(9, min_periods=1).min()
+        high_list = stock_dat['High'].rolling(9, min_periods=1).max()
+        rsv = (stock_dat['Close'] - low_list) / (high_list - low_list) * 100
+        stock_dat['K'] = rsv.ewm(com=2, adjust=False).mean()
+        stock_dat['D'] = stock_dat['K'].ewm(com=2, adjust=False).mean()
+        stock_dat['J'] = 3 * stock_dat['K'] - 2 * stock_dat['D']
 
-    @mpl.route_types(u"bar")
-    def bar_plot(df_index, df_dat, graph):
-        # 绘制bar图——Volume
-        # graph.bar(np.arange(0, len(df_index)), df_dat['Volume'], \
-        #     color=['g' if df_dat['Open'][x] > df_dat['Close'][x] else 'r' for x in range(0,len(df_index))])
+        type_dict = {'K': stock_dat.K,
+                     'D': stock_dat.D,
+                     'J': stock_dat.J
+                     }
+        view_function = MplTypesDraw.mpl.route_output(u"line")
+        view_function(stock_dat.index, type_dict, sub_graph)
 
-        graph.bar(np.arange(0, len(df_index)), df_dat['bar_red'], facecolor='red')
-        graph.bar(np.arange(0, len(df_index)), df_dat['bar_green'], facecolor='green')
-
-    @mpl.route_types(u"hline")
-    def hline_plot(df_index, df_dat, graph):
-        # 绘制hline图
-        for key, val in df_dat.items():
-            graph.axhline(val['pos'], c=val['c'], label=key)
-
-    @mpl.route_types(u"annotate")
-    def annotate_plot(df_index, df_dat, graph):
-        # 绘制annotate图
-        for key, val in df_dat.items():
-            for kl_index, today in val['andata'].iterrows():
-                x_posit = df_index.get_loc(kl_index)
-                graph.annotate(u"{}\n{}".format(key, today.name.strftime("%m.%d")),
-                               xy=(x_posit, today[val['xy_y']]),
-                               xycoords='data',
-                               xytext=(val['xytext'][0], val['xytext'][1]),
-                               va=val['va'],  # 点在标注下方
-                               textcoords='offset points',
-                               fontsize=val['fontsize'],
-                               arrowprops=val['arrow'])
-
-    @mpl.route_types(u"filltrade")
-    def filltrade_plot(df_index, df_dat, graph):
-        # 绘制filltrade图
-        signal_shift = df_dat['signal'].shift(1)
-        signal_shift.fillna(value=-1, inplace=True)  # 序列最前面的NaN值用-1填充
-        list_signal = np.sign(df_dat['signal'] - signal_shift)
-        bs_singal = list_signal[list_signal != 0]
-
-        skip_days = False
-        for kl_index, value in bs_singal.iteritems():  # iteritems以迭代器形式返回
-            if (value == 1) and (skip_days == False):
-                start = df_index.get_loc(kl_index)
-                skip_days = True
-            elif (value == -1) and (skip_days == True):
-                end = df_index.get_loc(kl_index) + 1  # 加1用于匹配[start:end]选取到end值
-                skip_days = False
-
-                if df_dat['jdval'][end - 1] < df_dat['jdval'][start]:  # 赔钱显示绿色
-                    graph.fill_between(np.arange(start, end), 0, df_dat['jdval'][start:end], color='green', alpha=0.38)
-                    is_win = False
-                else:  # 赚钱显示红色
-                    graph.fill_between(np.arange(start, end), 0, df_dat['jdval'][start:end], color='red', alpha=0.38)
-                    is_win = True
-                graph.annotate('获利\n' if is_win else '亏损\n',
-                               xy=(end, df_dat['jdval'].asof(kl_index)),
-                               xytext=(df_dat['xytext'][0], df_dat['xytext'][1]),
-                               xycoords='data',
-                               va=df_dat['va'],  # 点在标注下方
-                               textcoords='offset points',
-                               fontsize=df_dat['fontsize'],
-                               arrowprops=df_dat['arrow'])
-        # 整个时间序列填充为底色blue 透明度alpha小于后标注区间颜色
-        graph.fill_between(np.arange(0, len(df_index)), 0, df_dat['jdval'], color='blue', alpha=.08)
-
-
-class MplVisualIf(MplTypesDraw):  # matplotlib Visualization interface
-
-    def __init__(self):
+    def __init__(self, **kwargs):
         MplTypesDraw.__init__(self)
+        self.fig = plt.figure(figsize=kwargs['figsize'], dpi=100, facecolor="white")  # 创建fig对象
+        self.graph_dict = {}
+        self.graph_curr = []
 
-    def fig_creat(self, **kwargs):
-        if 'figsize' in kwargs.keys():  # 创建fig对象
-            self.fig = plt.figure(figsize=kwargs['figsize'], dpi=100, facecolor="white")
+        try:
+            gs = gridspec.GridSpec(kwargs['nrows'], kwargs['ncols'],
+                                   left=kwargs['left'], bottom=kwargs['bottom'], right=kwargs['right'],
+                                   top=kwargs['top'],
+                                   wspace=kwargs['wspace'], hspace=kwargs['hspace'],
+                                   height_ratios=kwargs['height_ratios'])
+        except:
+            raise Exception("para error")
         else:
-            self.fig = plt.figure(figsize=(14, 7), dpi=100, facecolor="white")
-        self.graph = self.fig.add_subplot(1, 1, 1)  # 创建子图
-        self.fig.autofmt_xdate(rotation=45)  # 避免x轴日期刻度标签的重叠 将每个ticker标签倾斜45度
+            for i in range(0, kwargs['nrows'], 1):
+                self.graph_dict[kwargs['subplots'][i]] = self.fig.add_subplot(gs[i, :])
 
-    def fig_config(self, **kwargs):
-        if 'legend' in kwargs.keys():
-            self.graph.legend(loc=kwargs['legend'], shadow=True)
-        if 'xlabel' in kwargs.keys():
-            self.graph.set_xlabel(kwargs['xlabel'])
-        else:
-            self.graph.set_xlabel(u"日期")
-        self.graph.set_title(kwargs['title'])
-        self.graph.set_ylabel(kwargs['ylabel'])
-        self.graph.set_xlim(0, len(self.index))  # 设置x轴的范围
-
-        if 'ylim' in kwargs.keys():  # 设置y轴的范围
-            bottom_lim = self.graph.get_ylim()[0]
-            top_lim = self.graph.get_ylim()[1]
-            range_lim = top_lim - bottom_lim
-            self.graph.set_ylim(bottom_lim + range_lim * kwargs['ylim'][0],
-                                top_lim + range_lim * kwargs['ylim'][1])
-
-        if 'xticks' in kwargs.keys():  # X轴刻度设定
-            self.graph.set_xticks(range(0, len(self.index), kwargs['xticks']))
-        else:
-            self.graph.set_xticks(range(0, len(self.index), 15))  # 默认每15天标一个日期
-        if 'xticklabels' in kwargs.keys():  # 标签设置为日期
-            self.graph.set_xticklabels([self.index.strftime(kwargs['xticklabels'])[index] \
-                                        for index in self.graph.get_xticks()])
-        else:
-            self.graph.set_xticklabels([self.index.strftime('%Y-%m-%d')[index] \
-                                        for index in self.graph.get_xticks()])
-
-    def fig_show(self, **kwargs):
+    def graph_run(self, stock_data, **kwargs):
+        # 绘制子图
+        self.df_ohlc = stock_data
+        for key in kwargs:
+            self.graph_curr = self.graph_dict[kwargs[key]['graph_name']]
+            for path, val in kwargs[key]['graph_type'].items():
+                view_function = MultiGraphIf.app.route_output(path)
+                view_function(self.df_ohlc, self.graph_curr, val)
+            self.graph_attr(**kwargs[key])
         plt.show()
 
-    def fig_output(self, **kwargs):
-        self.index = kwargs['index']
-        self.fig_creat(**kwargs)
-        for path, val in kwargs['draw_kind'].items():
-            print(u"输出[%s]可视化图表:" % path)
-            view_function = self.mpl.route_output(path)
-            view_function(self.index, val, self.graph)
-        self.fig_config(**kwargs)
-        self.fig_show(**kwargs)
+        """
+        print("kwargs %s-->%s" % (key, kwargs[key]))
+        #globals().get('self.%s' % key)(**kwargs[key])
+        eval('self.%s' % key)()
+        #self.kline_draw(**kwargs[key])
+        """
+
+    def graph_attr(self, **kwargs):
+
+        if 'title' in kwargs.keys():
+            self.graph_curr.set_title(kwargs['title'])
+
+        if 'legend' in kwargs.keys():
+            self.graph_curr.legend(loc=kwargs['legend'], shadow=True)
+
+        if 'xlabel' in kwargs.keys():
+            self.graph_curr.set_xlabel(kwargs['xlabel'])
+
+        self.graph_curr.set_ylabel(kwargs['ylabel'])
+        self.graph_curr.set_xlim(0, len(self.df_ohlc.index))  # 设置一下x轴的范围
+        self.graph_curr.set_xticks(range(0, len(self.df_ohlc.index), kwargs['xticks']))  # X轴刻度设定 每15天标一个日期
+
+        if 'xticklabels' in kwargs.keys():
+            self.graph_curr.set_xticklabels(
+                [self.df_ohlc.index.strftime(kwargs['xticklabels'])[index] for index in
+                 self.graph_curr.get_xticks()])  # 标签设置为日期
+
+            # X-轴每个ticker标签都向右倾斜45度
+            for label in self.graph_curr.xaxis.get_ticklabels():
+                label.set_rotation(45)
+                label.set_fontsize(10)  # 设置标签字体
+        else:
+            for label in self.graph_curr.xaxis.get_ticklabels():
+                label.set_visible(False)
