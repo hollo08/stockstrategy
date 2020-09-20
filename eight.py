@@ -737,13 +737,13 @@ if __name__ == '__main__':
     #draw_volume_chart(df_stockload.copy(deep=True))  # 成交量图
     #draw_sma_chart(df_stockload.copy(deep=True))  # 移动平均线图
     #draw_macd_chart(df_stockload.copy(deep=True))  # MACD图
-    draw_kdj_chart(df_stockload.copy(deep=True))  # KDJ图
+    #draw_kdj_chart(df_stockload.copy(deep=True))  # KDJ图
     #draw_kdj1_chart(df_stockload.copy(deep=True))  # KDJ图-for in
     #draw_cross_annotate(df_stockload.copy(deep=True))  # 均线交叉提示
     #draw_gap_annotate(df_stockload.copy(deep=True))  # 跳空缺口提示
     #draw_kweek_chart(df_stockload.copy(deep=True))  # 重采样周K线图形
     #draw_fibonacci_chart(df_stockload.copy(deep=True))  # 黄金分割率绘制支撑与阻力线
-    #draw_tasma_chart(df_stockload.copy(deep=True))  # talib SMA 普通移动平均线
+    draw_tasma_chart(df_stockload.copy(deep=True))  # talib SMA 普通移动平均线
     #draw_tamacd_chart(df_stockload.copy(deep=True))  # talib MACD
     #draw_takdj_chart(df_stockload.copy(deep=True))  # talib KDJ
     #draw_takpattern_annotate(df_stockload.copy(deep=True))  # talib K-line pattern标注

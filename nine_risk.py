@@ -474,7 +474,7 @@ def draw_mult_trace():
 
 if __name__ == '__main__':
 
-    df_stockload = pro_daily_stock("600795.SH", '20180601', '20190601')
+    df_stockload = pro_daily_stock("000651.SZ", '20180601', '20190601')
     print(df_stockload.head())
 
 
@@ -487,11 +487,11 @@ if __name__ == '__main__':
     [238 rows x 6 columns]
     """
     #draw_trade_chart(get_trade_signal(df_stockload.copy(deep=True)))  # 交易获利/亏损区间可视化
-    #log_trade_info(get_trade_signal(df_stockload.copy(deep=True))) # 交易概览信息的统计
-    #draw_absolute_profit(get_trade_signal(df_stockload.copy(deep=True)))  # 绝对收益—资金的度量
+    #log_trade_info(get_trade_signal(df_stocklo ad.copy(deep=True))) # 交易概览信息的统计
+    draw_absolute_profit(get_trade_signal(df_stockload.copy(deep=True)))  # 绝对收益—资金的度量
     #draw_relative_profit(get_trade_signal(df_stockload.copy(deep=True)))  # 相对收益—策略VS基准
     #draw_closemax_risk(get_trade_signal(df_stockload.copy(deep=True)))  # 度量策略最大风险回撤——收盘价最大回撤
     #draw_profitmax_risk(get_trade_signal(df_stockload.copy(deep=True)))  # 度量策略最大风险回撤——资金最大回撤
 
-    draw_mult_trace()
+    #draw_mult_trace()
 
