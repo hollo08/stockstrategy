@@ -9,13 +9,12 @@ import datetime
 import talib
 import random
 import matplotlib.pyplot as plt
-import mpl_finance as mpf  # 替换 import matplotlib.finance as mpf
-import matplotlib.gridspec as gridspec  # 分割子图
 
 from seven import bs_k_data_stock, pro_daily_stock, json_to_str
-from eight import MplVisualIf
+from MplVisualIf import DefTypesPool, MplTypesDraw, MplVisualIf
 from nine_risk import draw_trade_chart, draw_absolute_profit, draw_relative_profit, \
-    draw_closemax_risk, draw_profitmax_risk, MultiTraceIf
+    draw_closemax_risk, draw_profitmax_risk
+from MultiGraphIf import MultiGraphIf
 
 # 参数设置
 pd.set_option('display.expand_frame_repr', False)  # False不允许换行
@@ -503,14 +502,14 @@ if __name__ == '__main__':
         # print(get_ndays_signal(df_stockload.copy(deep=True)))  # 海龟策略-唐奇安通道突破(N日突破) 买入/卖出信号
         draw_ndays_annotate(get_ndays_signal(df_stockload.copy(deep=True)))  # 海龟策略-唐奇安通道突破(N日突破) 买入/卖出信号
 
-        draw_stock = MultiTraceIf(**layout_dict)
+        draw_stock = MultiGraphIf(**layout_dict)
         draw_stock.graph_run(get_ndays_signal(df_stockload.copy(deep=True)), **subplots_dict)
 
     if False:
         # draw_atr_chart(df_stockload.copy(deep=True))
         # get_ndays_atr_signal(df_stockload.copy(deep=True))
         # draw_trade_chart(get_ndays_atr_signal(df_stockload.copy(deep=True))) # 交易获利/亏损区间可视化
-        draw_stock = MultiTraceIf(**layout_dict)
+        draw_stock = MultiGraphIf(**layout_dict)
         draw_stock.graph_run(get_ndays_atr_signal(df_stockload.copy(deep=True)), **subplots_dict)
 
     if True:
