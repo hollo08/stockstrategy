@@ -7,8 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 engine_ts = create_engine('mysql://root:123456@localhost:3306/stock_data?charset=utf8&use_unicode=1')
 
-def read_data():
-    sql = """SELECT * FROM stock_basic"""
+def read_data(sql="ELECT * FROM stock_basic"):
     df = pd.read_sql_query(sql, engine_ts)
     return df
 
@@ -45,7 +44,6 @@ if __name__ == '__main__':
     #获取所有股票代码
     #df = get_data()
     #write_data(df, name='stock_basic')
-
 
     #获取每日股票价格信息
     df = read_data()
