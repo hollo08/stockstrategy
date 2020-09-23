@@ -16,8 +16,7 @@ class MonitorStock():
 
     # 大于某手的大单
     def getBigDeal(self, code, vol):
-        df = ts.get_tick_data(code, date='2020-09-22', src='tt')
-        print(df.head(5))
+        df = ts.get_tick_data(code, date='2020-09-23', src='tt')
         t = df[df['volume'] > vol]
         s = df[df['amount'] > 100000000]
         print('\n')
