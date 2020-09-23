@@ -3,14 +3,14 @@
 
 
 import tushare as ts
-from toolkit import Toolkit
+from toolkit import read_stock
 from mysqlUtil import read_data
 #pd.set_option('display.max_rows', None)
 
 
 class MonitorStock():
     def __init__(self):
-        self.mystock = Toolkit.read_stock('mystock.csv')
+        self.mystock = read_stock(file='mystock.csv')
         self.base = read_data("SELECT * FROM stock_basic")
         print(self.base.head(5))
 
@@ -37,8 +37,8 @@ class MonitorStock():
 
     def loops(self):
         for i in self.mystock:
-            print(i)
-            #self.getBigDeal(i, 1000)
+            #print(i)
+            self.getBigDeal(i, 5000)
 
 
 if __name__ == '__main__':
