@@ -10,7 +10,7 @@ from mysqlUtil import read_data
 
 class MonitorStock():
     def __init__(self):
-        self.mystock = read_stock(file='mystock.csv')
+        self.mystock = read_stock(file='data/mystock.csv')
         self.base = read_data("SELECT * FROM stock_basic")
         print(self.base.head(5))
 
