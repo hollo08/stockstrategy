@@ -5,9 +5,9 @@ import tushare as ts
 from sqlalchemy import create_engine
 from concurrent.futures import ThreadPoolExecutor
 
-engine_ts = create_engine('mysql://root:123456@localhost:3306/stock_data?charset=utf8&use_unicode=1')
+engine_ts = create_engine('mysql://root:admin@mysql-dev.bolo.me:30099/s_data?charset=utf8&use_unicode=1')
 
-def read_data(sql="ELECT * FROM stock_basic"):
+def read_data(sql="SELECT * FROM stock_basic"):
     df = pd.read_sql_query(sql, engine_ts)
     return df
 
@@ -20,6 +20,7 @@ def get_data():
     pro = ts.pro_api(token)
     df = pro.stock_basic(fields='ts_code,symbol,name,area,industry,fullname,enname,market,exchange,curr_type,'
                                        'list_status,list_date,list_date,is_hs')
+    print(df)
     return df
 
 token = os.environ.get('tushare_token')
@@ -27,8 +28,8 @@ pro = ts.pro_api(token)  # 初始化pro接口
 
 table_name = 'stock_day_data'
 
-start = '20120916'
-end = '20200915'
+start = '20220916'
+end = '20211224'
 def to_sql(ts_code):
     print(ts_code)
     data = pro.daily(ts_code=ts_code, start_date=start, end_date=end)

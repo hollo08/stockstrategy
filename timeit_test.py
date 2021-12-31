@@ -19,11 +19,11 @@ def timeit_test(number=3, repeat=3):
     return decorator
 
 
-@timeit_test(number=3, repeat=3)
+@timeit_test(number=1, repeat=3)
 def test():
     a = []
     for i in range(2000000):
         a.append(i)
 
 
-#test()
+test()

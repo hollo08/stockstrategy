@@ -80,7 +80,7 @@ def ggt_top10():
     获取港股通每日成交数据，其中包括沪市、深市详细数据
     URL:https://tushare.pro/document/2?doc_id=49
     """
-    return pro.query('ggt_top10', ts_code='00700', start_date='20200922', end_date='20200923')
+    return pro.query('ggt_top10', ts_code='00700', start_date='20210922', end_date='20210923')
 
 
 #print(stock_basic())
@@ -90,5 +90,5 @@ def ggt_top10():
 #print(daily_basic())
 #print(get_bar())
 #print(hsgt_top10())
-#print(hk_hold())
-print(ggt_top10())
+print(hk_hold())
+#print(ggt_top10())
