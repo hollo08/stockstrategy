@@ -1,0 +1,7 @@
+import numpy as np 
+from matplotlib import pyplot as plt 
+x = np.arange(1,100) 
+y =  x* x  
+plt.figure()
+plt.plot(x,y,"oy")
+plt.show()

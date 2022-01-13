@@ -1,0 +1,30 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(valuation).filter(
+valuation.circulating_market_cap > 10000 ), date='2018-10-22')
+dataframe1
+
+dataframe2 = history(10, unit='1d', field='close', security_list=dataframe1['code'], df=True, skip_paused=False, fq='pre')
+dataframe2
+
+from matplotlib import pyplot as plt
+matplotlib.rcParams.update({'font.size': 12, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(dataframe2['601288.XSHG'], label="农业银行")
+ax.plot(dataframe2['601857.XSHG'], label="中国石油")
+ax.plot(dataframe2['601398.XSHG'], label="工商银行")
+ax.legend(); 
+ax.set_xlabel('三只银行股的日期')
+ax.set_ylabel('三只银行股的价格')
+ax.set_title('三只银行股的近10个交易日的收盘价走势对比图')
+
+
+
+
+
+
+
+
+
+
+
+

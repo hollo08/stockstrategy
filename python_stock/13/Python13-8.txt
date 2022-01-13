@@ -1,0 +1,25 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(valuation).filter(
+valuation.market_cap > 12000 ) , date='2019-10-22')
+dataframe1
+
+print("总市值大于12000亿的股票代码：\n",dataframe1['code'])
+print("总市值大于12000亿的总市值：\n",dataframe1['market_cap'])
+
+
+from matplotlib import pyplot as plt 
+plt.figure()
+plt.plot(dataframe1['market_cap'],"ob")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+#从jqfactor模块中导入Factor类
+from jqfactor import Factor
+#自定义myalpha类，继续Factor类
+class myalpha(Factor):
+        name = 'myalpha1'
+        max_window = 1
+        # 设置依赖的数据
+        dependencies = ['high','low','volume','money']
+        # 计算因子的函数， 需要返回一个 pandas.Series, index 是股票代码，value 是因子值
+        def calc(self, data):
+            high = data['high']
+            low = data['low']
+            vwap = data['money']/data['volume']
+       # 返回因子值，这里求平均值是为了把只有一行的 dataframe 转成 series
+            return (np.power(high*low,0.5) - vwap).mean()
+securities = ['000001.XSHG','000002.XSHG','000009.XSHG']
+#调用calc_factors()函数来计算单因子分析中定义的因子值
+factors = calc_factors(securities, [myalpha()], start_date='2019-06-01', end_date='2019-08-12')
+factors['myalpha1']
+

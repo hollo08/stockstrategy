@@ -1,0 +1,21 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+#定义股票池列表
+security_list1 = '000001.XSHE'
+# 计算并输出 security_list1 的 MA 值
+MA1 = MA(security_list1, check_date='2019-08-01', timeperiod=5)
+MA2 = MA(security_list1, check_date='2019-08-01', timeperiod=10)
+MA3 = MA(security_list1, check_date='2019-08-01', timeperiod=30)
+print("平安银行的5日均线：",MA1[security_list1])
+print("平安银行的10日均线：",MA2[security_list1])
+print("平安银行的30日均线：",MA3[security_list1])
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+import numpy as np
+numpy1=np.matrix([[2,4,6],[1,3,5]])
+print("矩阵数据内容：")
+print(numpy1)
+numpy2 = numpy1.T      #矩阵的转置
+print("矩阵的转置后的数据内容：")
+print(numpy2)
+print("矩阵的乘法：")
+print(numpy1*numpy2)
+numpy3 = numpy1.I     #矩阵的求逆
+print("矩阵的求逆:")
+print(numpy3)
+
+

@@ -1,0 +1,16 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = '000002.XSHE'
+# 计算并输出 security_list1 的UOS值
+uos_ultiInc, uos_mauos = UOS(security_list1,check_date='2019-08-01', N1 = 7, N2 = 14, N3 = 28, M = 6)
+print("万科A的终极指标UOS的终极指标值：",uos_ultiInc[security_list1])
+print("万科A的终极指标UOS的MAUOS的值：",uos_mauos[security_list1])
+
+
+
+
+
+
+
+

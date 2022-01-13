@@ -1,0 +1,20 @@
+from jqfactor import Factor
+class mygross(Factor):
+    # 设置因子名称
+    name = ' mygross 1'
+    # 设置获取数据的时间窗口长度
+    max_window = 1
+    # 设置依赖的数据
+    dependencies = ['total_operating_revenue','total_operating_cost','total_assets']
+    # 计算因子的函数， 需要返回一个 pandas.Series, index 是股票代码，value 是因子值
+    def calc(self, data):
+        # 获取单季度的营业总收入数据 , index 是日期，column 是股票代码， value 是营业总收入
+        total_operating_revenue = data['total_operating_revenue']
+        # 获取单季度的营业总成本数据
+        total_operating_cost = data['total_operating_cost']
+        # 获取总资产
+        total_assets = data['total_assets']
+        # 计算 gross_profitability
+        gross_profitability = (total_operating_revenue - total_operating_cost)/total_assets
+        # 由于 gross_profitability 是一个一行 n 列的 dataframe，可以直接求 mean 转成 series
+        return gross_profitability.mean()

@@ -1,0 +1,26 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = '000001.XSHE'
+# 计算并输出 security_list1 的 BOLL 值
+upperband, middleband, lowerband = Bollinger_Bands(security_list1, check_date='2019-08-01', timeperiod=20, nbdevup=2, nbdevdn=2)
+print("平安银行的布林通道线BOLL的上轨线UB值：",upperband[security_list1])
+print("平安银行的布林通道线BOLL的中轨线MB值：",middleband[security_list1])
+print("平安银行的布林通道线BOLL的下轨线LB值：",lowerband[security_list1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

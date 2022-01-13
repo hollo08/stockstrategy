@@ -1,0 +1,13 @@
+myd1 = get_concept(security=['600036.XSHG'], date="2019-12-22")
+myd1
+
+
+
+
+
+
+
+
+
+
+

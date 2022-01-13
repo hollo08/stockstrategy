@@ -1,0 +1,24 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表，调用get_industry_stocks函数，获取纺织业的成分股
+security_list1 = get_industry_stocks('C17')
+# 计算并输出 security_list1 的 OSC 值
+WR1, MAWR1 = WR(security_list1, check_date = '2019-08-01', N = 10, N1 = 6)
+print("纺织业的成分股的WR值具体如下：")
+for stock in security_list1:
+    print(WR1[stock],"      ",MAWR1[stock])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

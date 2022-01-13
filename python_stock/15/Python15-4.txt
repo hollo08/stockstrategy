@@ -1,0 +1,25 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = '600036.XSHG'
+security_list2 = ['600036.XSHG','000002.XSHE','600019.XSHG']
+# 计算并输出 security_list1 的 GDX 值
+gdx_jax, gdx_ylx, gdx_zcx = GDX(security_list1,check_date='2019-6-10', N = 30, M = 9)
+print("招商银行的济安线的值：",gdx_jax[security_list1])
+print("招商银行的压力线的值：",gdx_ylx[security_list1])
+print("招商银行的支撑线的值：",gdx_zcx[security_list1])
+# 输出 security_list2 的 GDX 值
+gdx_jax, gdx_ylx, gdx_zcx = GDX(security_list2,check_date='2019-6-10', N = 30, M = 9)
+print("\n\n招商银行、万科A、宝钢股份的济安线、压力线和支撑线的值：\n")
+for stock in security_list2:
+    print(gdx_jax[stock])
+    print(gdx_ylx[stock])
+    print(gdx_zcx[stock])
+
+
+
+
+
+
+
+

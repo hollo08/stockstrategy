@@ -1,0 +1,27 @@
+from jqdata import finance
+q=query(finance.STK_EMPLOYEE_INFO).filter(finance.STK_EMPLOYEE_INFO.code=='600036.XSHG')
+df=finance.run_query(q)
+df
+
+
+from jqdata import finance
+q=query(finance.STK_EMPLOYEE_INFO).filter(finance.STK_EMPLOYEE_INFO.code.in_(['600036.XSHG','600019.XSHG','000002.XSHE']))
+df=finance.run_query(q)
+df
+
+
+from jqdata import finance
+q=query(finance.STK_EMPLOYEE_INFO).filter(finance.STK_EMPLOYEE_INFO.graduate_rate>50)
+df=finance.run_query(q)
+print(df['code'])
+
+
+from jqdata import finance
+q=query(finance.STK_EMPLOYEE_INFO).filter(finance.STK_EMPLOYEE_INFO.retirement>finance.STK_EMPLOYEE_INFO.employee*0.3)
+df=finance.run_query(q)
+print(df['code'])
+
+
+
+
+

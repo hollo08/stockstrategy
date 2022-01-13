@@ -1,0 +1,29 @@
+import pandas as pd
+from matplotlib import pyplot as plt 
+dataframe1 = history(100, unit='1d', field='open', security_list=['600015.XSHG','600016.XSHG','600036.XSHG'], df=True, skip_paused=False, fq='pre')
+print("三个股票的近100个交易日的开盘价信息：\n",dataframe1)
+
+
+print("三只股票昨日的开盘价格:")
+print(dataframe1.iloc[-1])
+
+print("招商银行昨日的开盘价格:")
+print(dataframe1['600036.XSHG'][-1])
+
+
+print("三只股票近100日的开盘价的平均价格是：\n",dataframe1.mean())
+print("招商银行近100日的开盘价的平均价格是：",dataframe1['600036.XSHG'].mean())
+
+
+matplotlib.rcParams.update({'font.size': 12, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(dataframe1['600015.XSHG'], label="华夏银行")
+ax.plot(dataframe1['600016.XSHG'], label="民生银行")
+ax.plot(dataframe1['600036.XSHG'], label="招商银行")
+ax.legend(); 
+ax.set_xlabel('三只银行股的日期')
+ax.set_ylabel('三只银行股的价格')
+ax.set_title('三只银行股的开盘价走势对比图')
+
+
+

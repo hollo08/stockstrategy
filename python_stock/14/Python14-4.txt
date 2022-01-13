@@ -1,0 +1,25 @@
+from jqdata import finance
+q=query(finance.STK_LIST).filter(finance.STK_LIST.code=='600036.XSHG')
+df=finance.run_query(q)
+df
+
+
+print("招商银行的上市时间：",df['start_date'])
+q=query(finance.STK_LIST).filter(finance.STK_LIST.start_date>df['start_date'][0]).limit(3)
+df1=finance.run_query(q)
+df1['code']
+
+
+dataframe2 = history(12, unit='1d', field='close', security_list=df1['code'], df=True, skip_paused=False, fq='pre')
+dataframe2
+
+
+
+
+
+
+
+
+
+
+

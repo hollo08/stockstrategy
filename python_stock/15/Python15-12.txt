@@ -1,0 +1,24 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表，调用get_industry_stocks函数，获取计算机/互联网行业的成分股
+security_list1 = get_industry_stocks('I64')
+# 计算并输出 security_list1 的 OSC 值
+OSC1, MAOSC1 = OSC(security_list1, check_date = '2019-08-01', N = 20, M = 6)
+print("计算机/互联网行业的成分股的OSC值具体如下：")
+for stock in security_list1:
+    print(OSC1[stock],"      ",MAOSC1[stock])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

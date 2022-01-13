@@ -1,0 +1,9 @@
+import pandas as pd
+from matplotlib import pyplot as plt 
+dataframe1 = history(5, unit='1d', field='close', security_list='600019.XSHG', df=True, skip_paused=False, fq='pre')
+print("宝钢股份(600019)的近5个交易日的收盘价信息：\n",dataframe1)
+plt.figure()
+plt.plot(dataframe1,"ob")
+plt.show()
+
+

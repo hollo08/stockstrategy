@@ -1,0 +1,34 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(valuation).filter(
+valuation.pe_ratio_lyr  >  2  ,
+valuation.pe_ratio_lyr  <  6 ), date='2019-10-22')
+dataframe1
+
+myc1 = dataframe1['pe_ratio_lyr']        #静态市盈率
+matplotlib.rcParams.update({'font.size': 15, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(myc1, label="静态市盈率")
+ax.legend(); 
+ax.set_title('静态市盈率')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

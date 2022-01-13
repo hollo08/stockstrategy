@@ -1,0 +1,14 @@
+myd1 = get_industry(security=['600019.XSHG'], date="2019-12-22")
+myd1
+
+
+myd2 = get_industry(security=['600019.XSHG','000002.XSHE'], date="2019-12-22")
+myd2
+
+
+
+
+
+
+
+

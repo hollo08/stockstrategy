@@ -1,0 +1,24 @@
+import pandas as pd
+df1 = get_price('600036.XSHG',start_date='2019-10-14', end_date='2019-10-18', frequency='daily')
+print(df1)
+print("招商银行2019年10月14日至2019年10月18日的收盘价之和：",df1['close'].sum())
+
+print("招商银行2019年10月14日至2019年10月18日的成交量之和：",df1['volume'].sum())
+
+print("招商银行2019年10月14日至2019年10月18日的收盘价的平均值：",df1['close'].mean())
+
+myv = df1['close'].mean()
+df1[df1.close > myv]
+
+
+print("收盘价的标准偏差：",df1['close'].std())
+print("最高价的最大值：",df1['high'].max())
+print("最低价的最小值：",df1['low'].min())
+
+
+
+
+
+
+
+

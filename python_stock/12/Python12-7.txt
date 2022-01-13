@@ -1,0 +1,7 @@
+import pandas as pd
+q = query(valuation).filter(valuation.code.in_(['000001.XSHE', '600000.XSHG']))
+panel = get_fundamentals_continuously(q, end_date='2019-01-01', count=5)
+panel.minor_xs('600000.XSHG')
+
+
+

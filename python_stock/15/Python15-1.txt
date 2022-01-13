@@ -1,0 +1,15 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = '600036.XSHG'
+# 计算并输出 security_list1 的 MACD 值
+macd_diff, macd_dea, macd_macd = MACD(security_list1,check_date='2019-08-01', SHORT = 12, LONG = 26, MID = 9)
+print("招商银行的MACD指标的DIFF值：",macd_diff[security_list1])
+print("招商银行的MACD指标的DEA值：",macd_dea[security_list1])
+print("招商银行的MACD指标的MACD值：",macd_macd[security_list1])
+
+
+
+
+
+

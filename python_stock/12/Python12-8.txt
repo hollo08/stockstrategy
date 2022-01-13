@@ -1,0 +1,21 @@
+stocks = get_index_stocks('000134.XSHG')
+print("上证银行指数的成份股代码：\n",stocks)
+
+import pandas as pd
+from matplotlib import pyplot as plt 
+dataframe1 = history(10, unit='1d', field='open', security_list=stocks, df=True, skip_paused=False, fq='pre')
+print("上证银行指数的成份股的近10个交易日的开盘价信息：\n",dataframe1)
+
+
+myq1 = query(valuation.pe_ratio,valuation.turnover_ratio).filter(valuation.code.in_(stocks))
+dataframe2 = get_fundamentals(myq1, '2019-10-22')
+dataframe2
+
+
+plt.figure()
+plt.plot(dataframe2['pe_ratio'],"ob")
+plt.show()
+
+
+
+

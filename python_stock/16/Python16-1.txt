@@ -1,0 +1,24 @@
+import pandas as pd
+import seaborn as sns
+df = get_price('600036.XSHG', start_date='2019-01-10', end_date='2019-01-18', frequency='daily', fields=['close'])
+print(df)
+
+
+myr = df.pct_change()
+print(myr)
+
+myr = df.pct_change()
+print(myr)
+
+
+sns.distplot(myrs.iloc[:,0])
+
+sns.distplot(myrs.iloc[:,0],hist=False,color='red')
+
+sns.distplot(myrs.iloc[:,0],kde=False,color='green')
+
+
+
+
+
+

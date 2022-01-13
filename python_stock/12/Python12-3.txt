@@ -1,0 +1,17 @@
+import pandas as pd
+dataframe1 = attribute_history('600019.XSHG',10, '1d', ['open', 'close', 'high', 'low', 'volume', 'money'],True,True,'pre')
+dataframe1
+
+print("宝钢股份（600019）的昨日收盘价：",dataframe1['close'][-1])
+print("宝钢股份（600019）的10日收盘价的平均价：",dataframe1['close'].mean())
+
+
+print("宝钢股份（600019）2019年10月15日的开盘价：",dataframe1['open']['2019-10-15'])
+print("宝钢股份（600019）2019年10月15日的收盘价：",dataframe1['close']['2019-10-15'])
+print("宝钢股份（600019）2019年10月15日的成交金额：",dataframe1['money']['2019-10-15'])
+
+
+
+
+
+

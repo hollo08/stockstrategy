@@ -1,0 +1,17 @@
+from jqdata import finance
+q=query(finance.STK_XR_XD).filter(finance.STK_XR_XD.code =='600036.XSHG')
+df = finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+
+
+

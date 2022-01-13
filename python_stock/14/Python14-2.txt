@@ -1,0 +1,23 @@
+from jqdata import finance
+q=query(finance.STK_COMPANY_INFO).filter(finance.STK_COMPANY_INFO.code=='600036.XSHG')
+df=finance.run_query(q)
+df
+
+print("总经理:",df['ceo'])
+print("法人代表:",df['legal_representative'])
+print("注册资金:",df['register_capital'])
+print("所属城市:",df['city'])
+print()
+print("主营业务:",df['main_business'])
+print("经营范围:",df['business_scope'])
+
+q1=query(finance.STK_COMPANY_INFO).filter(finance.STK_COMPANY_INFO.city=='上海市',finance.STK_COMPANY_INFO.register_capital<10000)
+df1=finance.run_query(q1)
+df1['code']
+
+
+
+
+
+
+

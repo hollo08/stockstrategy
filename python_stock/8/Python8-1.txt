@@ -1,0 +1,12 @@
+import numpy as np 
+mya = np.array([11,25,36,89])  
+mya
+
+myb = np.array([11,25,36,89], dtype = complex)
+print("利用for循环显示数组中的数据：")
+for a in myb :
+    print(a)
+
+myc = np.array([[11,25,36,89],[20,50,60,90]]) 
+print("显示二维数组中的数据：\n",myc)
+print("\n\n第二行中的第三个数据：",myc[1][2])

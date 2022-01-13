@@ -1,0 +1,24 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator.code,indicator.net_profit_margin,
+indicator.operation_profit_to_total_revenue).filter(
+indicator.net_profit_margin > 100,
+indicator.operation_profit_to_total_revenue > 120 ) , date='2019-10-22')
+dataframe1
+
+myc1 = dataframe1['net_profit_margin']                      #销售净利率
+myc2 = dataframe1['operation_profit_to_total_revenue']      #营业利润率
+matplotlib.rcParams.update({'font.size': 15, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(myc1, label="销售净利率")
+ax.plot(myc2, label="营业利润率")
+ax.legend(); 
+ax.set_title('销售净利率和营业利润率')
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator).filter(
+indicator.operation_profit_to_total_revenue > 160), date='2019-10-22')
+dataframe1
+
+dataframe2 = history(12, unit='1d', field='close', security_list=dataframe1['code'], df=True, skip_paused=False, fq='pre')
+dataframe2
+
+
+
+
+
+
+
+

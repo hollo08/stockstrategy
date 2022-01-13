@@ -1,0 +1,33 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = ['000001.XSHE','000002.XSHE','601211.XSHG']
+# 输出 security_list1 的 MASS 值
+MASS1,MAMASS1 = MASS(security_list1, check_date='2019-08-01', N1=9, N2=25, M=6)
+for stock in security_list1:
+    print(MASS1[stock])
+    print(MAMASS1[stock])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

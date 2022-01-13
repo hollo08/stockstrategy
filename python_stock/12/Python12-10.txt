@@ -1,0 +1,26 @@
+stocks = get_industry_stocks('C35')
+print("专用设备制造业的股票代码：\n",stocks)
+
+import pandas as pd
+from matplotlib import pyplot as plt 
+dataframe1 = history(8, unit='1d', field='close', security_list=stocks, df=True, skip_paused=False, fq='pre')
+print("专用设备制造业股票的近8个交易日的收盘盘价信息：\n",dataframe1)
+
+
+myq1 = query(valuation.pe_ratio,valuation.turnover_ratio).filter(valuation.code.in_(stocks))
+dataframe2 = get_fundamentals(myq1, '2019-10-22')
+dataframe2
+
+
+plt.figure(figsize=(12,6))
+# 激活第一个 subplot
+plt.subplot(2,  1,  1) 
+plt.plot(dataframe2['pe_ratio'],"-b")          #实线蓝色绘制市盈率
+plt.subplot(2,  1,  2) 
+plt.plot(dataframe2['turnover_ratio'],"-r")      #实线红色绘制换手率
+plt.show()
+
+
+
+
+

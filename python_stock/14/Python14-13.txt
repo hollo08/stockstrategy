@@ -1,0 +1,17 @@
+from jqdata import finance
+q=query(finance.STK_CAPITAL_CHANGE).filter(finance.STK_CAPITAL_CHANGE.code=='600036.XSHG')
+df=finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+
+
+

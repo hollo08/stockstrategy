@@ -1,0 +1,16 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = ['000001.XSHE','000002.XSHE','601211.XSHG','603177.XSHG']
+# 计算并输出 security_list1 的 EMV 值
+EMV1,MAEMV1 = EMV(security_list1,check_date='2019-08-01', N = 14, M = 9)
+for stock in security_list1:
+    print(EMV1[stock])
+    print(MAEMV1[stock])
+
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+df = get_index_weights('000134.XSHG')
+print("上证银行指数的成份股权重：\n",df)
+
+
+
+

@@ -1,0 +1,15 @@
+from jqdata import finance
+q=query(finance.STK_SHARES_FROZEN).filter(finance.STK_SHARES_FROZEN.code=='600520.XSHG')
+df=finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+

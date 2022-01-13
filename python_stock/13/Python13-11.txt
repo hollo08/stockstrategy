@@ -1,0 +1,30 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(valuation).filter(
+valuation.circulating_cap > 1000000 ,
+valuation.circulating_market_cap > 2000 ) , date='2019-10-22')
+dataframe1
+
+myc1 = dataframe1['circulating_cap']             #流通股本
+myc2 = dataframe1['circulating_market_cap']      #流通市值
+plt.figure(figsize=(12,6))
+# 激活第一个 subplot
+plt.subplot(2,  1,  1) 
+plt.plot(myc1,"-b")          #流通股本
+plt.subplot(2,  1,  2) 
+plt.plot(myc2,"-r")          #流通市值
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

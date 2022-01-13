@@ -1,0 +1,42 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator.code,
+                                     indicator.roe,
+                                     indicator.roa
+                                    ).filter(
+indicator.roe > 10  ,
+indicator.roa > 6), date='2019-10-22')
+dataframe1
+
+from matplotlib import pyplot as plt 
+myc1 = dataframe1['roe']      #净资产收益率
+myc2 = dataframe1['roa']      #总资产净利率
+matplotlib.rcParams.update({'font.size': 15, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(myc1, label="净资产收益率")
+ax.plot(myc2, label="总资产净利率")
+ax.legend(); 
+ax.set_title('净资产收益率和总资产净利率')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

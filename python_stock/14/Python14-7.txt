@@ -1,0 +1,35 @@
+from jqdata import finance
+q=query(finance.STK_SHAREHOLDER_TOP10).filter(finance.STK_SHAREHOLDER_TOP10.code=='600036.XSHG')
+df=finance.run_query(q)
+df
+
+from jqdata import finance
+q=query(finance.STK_SHAREHOLDER_TOP10.shareholder_name,finance.STK_SHAREHOLDER_TOP10.share_number,finance.STK_SHAREHOLDER_TOP10.share_ratio).filter(finance.STK_SHAREHOLDER_TOP10.code=='600036.XSHG',finance.STK_SHAREHOLDER_TOP10.shareholder_rank==1)
+df1=finance.run_query(q)
+print("招商银行的第一大股东的名称、持股数量和持股比例:\n",df1)
+
+
+from jqdata import finance
+q=query(finance.STK_SHAREHOLDER_TOP10).filter(finance.STK_SHAREHOLDER_TOP10.shareholder_name=='招商局轮船股份有限公司')
+df2=finance.run_query(q)
+b = set(df2['code'])
+print("招商局轮船股份有限公司是十大股东的股票代码：",b)
+
+
+import pandas as pd
+dataframe1 = history(10, unit='1d', field='close', security_list=b, df=True, skip_paused=False, fq='pre')
+print("招商局轮船股份有限公司是十大股东的股票，近10个交易日的收盘价信息：\n",dataframe1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

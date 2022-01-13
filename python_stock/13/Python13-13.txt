@@ -1,0 +1,32 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(valuation).filter(
+valuation.ps_ratio  <  0.4,
+valuation.pb_ratio  <  0.8 ) , date='2019-10-22')
+dataframe1
+
+myc1 = dataframe1['ps_ratio']        #市销率
+myc2 = dataframe1['pb_ratio']      #市净率
+matplotlib.rcParams.update({'font.size': 15, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(myc1, label="市销率")
+ax.plot(myc2, label="市净率")
+ax.legend(); 
+ax.set_title('市销率和市净率')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

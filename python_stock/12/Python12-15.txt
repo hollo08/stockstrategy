@@ -1,0 +1,19 @@
+import pandas as pd
+dataframe1 = get_billboard_list(stock_list=None,end_date = '2019-10-22',count =1)
+dataframe1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

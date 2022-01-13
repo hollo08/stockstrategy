@@ -1,0 +1,18 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+security_list1 = ['000001.XSHE','000002.XSHE','601211.XSHG']
+# 输出 security_list2 的 EXPMA 值
+EXPMA1 = EXPMA(security_list1,check_date='2019-08-01', timeperiod=12)
+for stock in security_list1:
+    print(EXPMA1[stock])
+
+
+
+
+
+
+
+
+
+
+

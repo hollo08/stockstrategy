@@ -1,0 +1,17 @@
+from jqdata import finance
+q=query(finance.STK_EXCHANGE_TRADE_INFO).filter(finance.STK_EXCHANGE_TRADE_INFO.date>='2019-10-28')
+df = finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+import pandas as pd
+myq = query( valuation).filter( valuation.code == '600036.XSHG')
+dataframe1 = get_fundamentals(myq, '2019-10-12')
+dataframe1
+
+
+
+
+
+
+

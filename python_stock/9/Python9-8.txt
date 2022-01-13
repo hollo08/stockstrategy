@@ -1,0 +1,16 @@
+import pandas as pd
+dataframe1 = get_price('600036.XSHG',start_date='2019-07-3', end_date='2019-09-10', frequency='daily')
+dataframe1.loc["2019-09-6"]
+
+dataframe1.loc["2019-09-6",'close']
+
+dataframe1.loc["2019-08-1":"2019-08-5","close"]
+
+dataframe1.loc[:,"close"]
+
+
+
+
+
+
+

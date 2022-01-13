@@ -1,0 +1,28 @@
+import numpy as np  
+import pandas as pd
+import matplotlib.pyplot as plt  
+dataframe1 = get_price('600036.XSHG',start_date='2017-10-3', end_date='2019-10-10', frequency='daily')
+myc1 = dataframe1['close']   #收盘价
+myc2 = dataframe1['high']   #最高价
+myc3 = dataframe1['open']   #开盘价
+myc4 = dataframe1['low']   #最低价
+matplotlib.rcParams.update({'font.size': 15, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(myc1, 'b',label="招商银行的收盘价")
+ax.plot(myc2, 'g',label="招商银行的最高价")
+ax.plot(myc3, 'r',label="招商银行的开盘价")
+ax.plot(myc4, 'k',label="招商银行的最低价")
+ax.grid(True)
+ax.legend(loc=2); # 左上角
+ax.set_xlabel('招商银行的日期')
+ax.set_ylabel('招商银行的4种价格')
+ax.set_title('招商银行的日线图')
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+from jqdata import finance
+q=query(finance.STK_HOLDER_NUM).filter(finance.STK_HOLDER_NUM.code=='600036.XSHG',finance.STK_HOLDER_NUM.pub_date>'2018-01-01')
+df=finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+
+

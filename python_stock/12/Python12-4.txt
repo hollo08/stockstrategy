@@ -1,0 +1,30 @@
+import pandas as pd
+dataframe1 = attribute_history('600019.XSHG',100, '1d', ['open', 'close', 'high', 'low', 'volume', 'money'],True,True,'pre')
+myc1 = dataframe1['open']
+myc2 = dataframe1['close']
+dataframe1[myc1==myc2]
+
+
+dataframe1[myc2 > myc1]
+
+myc3 = dataframe1['close'].mean()
+dataframe1[myc2>myc3]
+
+
+myc3 = dataframe1['close'].mean()
+dataframe2 = dataframe1[myc2>myc3]
+myc4 = dataframe1['close']   #收盘价
+myc5 = dataframe1['money']   #成交金额
+plt.figure(figsize=(12,6))
+# 激活第一个 subplot
+plt.subplot(2,  1,  1) 
+plt.plot(myc4,"-b")          #实线蓝色绘制收盘价格
+plt.subplot(2,  1,  2) 
+plt.plot(myc5,"-r")          #实线红色绘制成交量
+plt.show()
+
+
+
+
+
+

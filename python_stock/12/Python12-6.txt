@@ -1,0 +1,43 @@
+import pandas as pd
+myq = query(valuation).filter(valuation.code.in_(['000001.XSHE', '600000.XSHG','000009.XSHE','600036.XSHG','600019.XSHG']))
+dataframe1 = get_fundamentals(myq, '2019-10-22')
+dataframe1
+
+
+myq1 = query(valuation.pe_ratio,valuation.turnover_ratio).filter(valuation.code.in_(['000001.XSHE', '600000.XSHG','000009.XSHE','600036.XSHG','600019.XSHG']))
+dataframe2 = get_fundamentals(myq1, '2019-10-22')
+dataframe2
+
+
+dataframe3 = get_fundamentals(query(
+        valuation.pe_ratio,valuation.turnover_ratio
+    ).filter(
+        valuation.market_cap > 1000,
+        valuation.pe_ratio < 10,
+    ).order_by(
+        # 按市值降序排列
+        valuation.market_cap.desc()
+    ).limit(
+        # 最多返回100个
+        100
+    ), date='2019-10-22')
+dataframe3
+
+
+
+myc1 = dataframe3['pe_ratio']         #市盈率
+myc2 = dataframe1['turnover_ratio']   #换手率
+plt.figure(figsize=(12,6))
+# 激活第一个 subplot
+plt.subplot(2,  1,  1) 
+plt.plot(myc1,"-b")          #实线蓝色绘制市盈率
+plt.subplot(2,  1,  2) 
+plt.plot(myc2,"-r")          #实线红色绘制换手率
+plt.show()
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator).filter(
+indicator.gross_profit_margin > 60,
+indicator.operation_profit_to_total_revenue > 80 ), date='2019-10-22')
+dataframe1['code']
+
+
+
+
+
+
+
+
+
+
+

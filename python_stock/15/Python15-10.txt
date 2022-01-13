@@ -1,0 +1,23 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = ['000001.XSHE','000002.XSHE','000009.XSHG']
+# 计算并输出 security_list1 的 MFI 值
+MFI1 = MFI(security_list1,check_date='2019-08-01', timeperiod=14)
+print("平安银行（000001）、万科A（000002）、中国宝安（000009）的资金流量具体如下：")
+for stock in security_list1:
+    print(MFI1[stock])
+
+
+
+
+
+
+
+
+
+
+
+
+
+

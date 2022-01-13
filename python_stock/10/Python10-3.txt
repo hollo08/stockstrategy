@@ -1,0 +1,9 @@
+import numpy as np 
+import pandas as pd
+from matplotlib import pyplot as plt 
+dataframe1 = get_price('600036.XSHG',start_date='2019-07-3', end_date='2019-08-10', frequency='daily')
+myc1 = dataframe1['close']
+plt.figure(figsize=(12,3))
+plt.plot(myc1,"ob")
+plt.show()
+

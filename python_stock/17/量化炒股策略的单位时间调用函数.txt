@@ -1,0 +1,20 @@
+def handle_data(context, data):
+    #获取初始化中要操作的股票
+    security = g.security
+    #调用MACD函数，并获取股票的MACD指标的DIF，DEA和MACD的值
+    macd_diff, macd_dea, macd_macd = MACD(security,check_date=context.current_dt, SHORT = 12, LONG = 26, MID = 9)
+    # 获取当前的现金
+    cash = context.portfolio.cash
+    # 如果当前有余额，并且DIFF、DEA均为正，DIFF向上突破DEA
+    if macd_diff[security] > 0 and macd_dea[security] >0 and macd_diff[security] > macd_dea[security] :
+        #调用按价值下单函数，用所有 cash 买入股票
+        order_value(security, cash)
+        # 记录这次买入，即写入log日志
+        log.info("买入股票 %s" % (security))
+    # 如果DIFF、DEA均为负，DIFF向下跌破DEA，并且目前有头寸
+    elif macd_diff[security] < 0 and macd_dea[security] < 0 and macd_diff[security] < macd_dea[security]  and context.portfolio.positions[security].closeable_amount> 0:
+        # 全部卖出，即持有仓位为0
+        order_target(security, 0)
+        # 记录这次卖出，即写入log日志
+        log.info("卖出股票 %s" % (security))
+

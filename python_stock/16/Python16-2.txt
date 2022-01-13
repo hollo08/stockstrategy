@@ -1,0 +1,13 @@
+import pandas as pd
+import seaborn as sns
+df = get_price('600019.XSHG', start_date='2018-06-01', end_date='2019-06-1', frequency='daily', fields=['open','close']) 
+returns = df.pct_change().dropna()
+sns.distplot(returns.iloc[:,0:1],color='red')
+
+
+
+
+
+
+
+

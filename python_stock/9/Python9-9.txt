@@ -1,0 +1,16 @@
+import pandas as pd
+df1 = get_price('600036.XSHG',start_date='2019-07-3', end_date='2019-10-18', frequency='daily')
+df1[df1.close == 37 ]
+
+df1[df1.close >= 37 ]
+
+df1[(df1.close <= 37) & (df1.volume >=100000000) ]
+
+df1[(df1.close > 37) | (df1.volume >100000000) ]
+
+
+
+
+
+
+

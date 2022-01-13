@@ -1,0 +1,13 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator).filter(indicator.inc_revenue_year_on_year > 800), date='2019-10-22')
+dataframe1
+
+print("营业收入同比增长率大于800的所有股票的股票代码:\n",dataframe1['code'])
+print("营业收入同比增长率大于800的所有股票的营业收入同比增长率:\n",dataframe1['inc_revenue_year_on_year'])
+
+
+dataframe2 = history(10, unit='1d', field='close', security_list=dataframe1['code'], df=True, skip_paused=False, fq='pre')
+dataframe2
+
+
+

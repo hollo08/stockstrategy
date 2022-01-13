@@ -1,0 +1,46 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator).filter(
+valuation.turnover_ratio > 15  ,
+balance.total_current_assets > balance.total_current_liability  ,
+cash_flow.subtotal_operate_cash_inflow > cash_flow.subtotal_operate_cash_outflow ,
+income.net_profit > 10000  ,
+indicator.gross_profit_margin > 50 ), date='2019-10-22')
+dataframe1['code']
+
+dataframe2 = history(10, unit='1d', field='close', security_list=dataframe1['code'], df=True, skip_paused=False, fq='pre')
+dataframe2
+
+from matplotlib import pyplot as plt 
+matplotlib.rcParams.update({'font.size': 12, 'font.family': 'serif'})
+fig, ax = plt.subplots()
+ax.plot(dataframe2['300311.XSHE'], label="任子行")
+ax.plot(dataframe2['603956.XSHG'], label="威派格")
+ax.legend(); 
+ax.set_xlabel('选出股票的日期')
+ax.set_ylabel('选出股票的价格')
+ax.set_title('选出股票的近10个交易日的收盘价')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

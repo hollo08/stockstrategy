@@ -1,0 +1,19 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表，调用get_concept_stocks函数，获取风力发电概念板块的成分股
+security_list1 = get_concept_stocks('GN036')
+# 输出 security_list1的12日变异平均线值
+VMA1 = VMA(security_list1,check_date='2019-08-01', timeperiod=12)
+for stock in security_list1:
+    print(VMA1[stock])
+
+
+
+
+
+
+
+
+
+
+

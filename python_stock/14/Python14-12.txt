@@ -1,0 +1,16 @@
+from jqdata import finance
+q=query(finance.STK_SHAREHOLDERS_SHARE_CHANGE).filter(finance.STK_SHAREHOLDERS_SHARE_CHANGE.code=='000002.XSHE')
+df=finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+
+

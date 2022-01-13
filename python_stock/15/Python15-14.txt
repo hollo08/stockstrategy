@@ -1,0 +1,23 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = '000001.XSHE'
+# 计算并输出 security_list1 的 CCI值
+CCI1 = CCI(security_list1, check_date='2019-08-01', N=14)
+print("平安银行的顺势指标CCI的值：",CCI1[security_list1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

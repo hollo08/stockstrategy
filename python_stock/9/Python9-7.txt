@@ -1,0 +1,16 @@
+import pandas as pd
+dataframe1 = get_price('000009.XSHE',start_date='2018-07-3', end_date='2018-09-10', frequency='daily')
+dataframe1.head()
+
+dataframe1.tail()
+
+dataframe1[3:6]
+
+dataframe1[['open']]
+
+dataframe1[["open","close","money"]]
+
+
+
+
+

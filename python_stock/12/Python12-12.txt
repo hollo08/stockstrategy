@@ -1,0 +1,20 @@
+stocks = get_concept_stocks('GN181')
+print("一带一路概念板块的所有股票代码：\n",stocks)
+
+import pandas as pd
+from matplotlib import pyplot as plt 
+dataframe1 = history(12, unit='1d', field='close', security_list=stocks, df=True, skip_paused=False, fq='pre')
+print("一带一路概念板块的所有股票的近12个交易日的收盘价信息：\n",dataframe1)
+
+myq1 = query(valuation).filter(valuation.code.in_(stocks))
+dataframe2 = get_fundamentals(myq1, '2019-10-22')
+dataframe2
+
+
+
+
+
+
+
+
+

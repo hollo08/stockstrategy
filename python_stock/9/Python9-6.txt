@@ -1,0 +1,8 @@
+import pandas as pd
+dataframe1 = get_price('600036.XSHG',start_date='2019-07-3', end_date='2019-07-10', frequency='daily')
+dataframe1
+
+
+
+
+

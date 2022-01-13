@@ -1,0 +1,12 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator.code,indicator.inc_revenue_annual).filter(indicator.inc_revenue_annual > 900), date='2019-10-22')
+dataframe1
+
+from matplotlib import pyplot as plt 
+plt.figure()
+plt.plot(dataframe1['inc_revenue_annual'],"ob")
+plt.show()
+
+
+
+

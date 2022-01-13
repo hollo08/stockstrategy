@@ -1,0 +1,33 @@
+#导入technical_analysis库
+from jqlib.technical_analysis import *
+# 定义股票池列表
+security_list1 = '000001.XSHE'
+# 计算并输出 security_list1 的 VR 值
+VR1,MAVR1 = VR(security_list1, check_date='2019-08-01', N=26, M=6)
+print("平安银行的成交量变异率VR的VR值：",VR1[security_list1])
+print("平安银行的成交量变异率VR的MAVR值：",MAVR1[security_list1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

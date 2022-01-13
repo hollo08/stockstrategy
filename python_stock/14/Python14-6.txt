@@ -1,0 +1,16 @@
+from jqdata import finance
+q=query(finance.STK_MANAGEMENT_INFO).filter(finance.STK_MANAGEMENT_INFO.code=='600036.XSHG').limit(6)
+df=finance.run_query(q)
+df
+
+
+
+
+
+
+
+
+
+
+
+

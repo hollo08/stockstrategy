@@ -1,0 +1,7 @@
+class MA30(Factor):
+    name = 'ma30'
+    max_window =30
+    dependencies = ['close']
+    def calc(self, data):
+        return data['close'][-30:].mean()
+

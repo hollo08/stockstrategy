@@ -1,0 +1,13 @@
+import numpy as np 
+# 一维数组，默认类型为 float 
+mya = np.zeros(6) 
+print("zeros一维数组：\n",mya)
+#二维数组，设置数据类型为 int
+myb = np.zeros((3,3), dtype = np.int)  
+print("zeros二维数组：\n",myb)
+#二维数组，默认类型为 float
+myc = np.ones((6,4))
+print("ones二维数组：\n",myc)
+#empty数组
+myd = np.empty((2,4))
+print("empty二维数组：\n",myd)

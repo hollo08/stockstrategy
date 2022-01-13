@@ -1,0 +1,15 @@
+import pandas as pd
+dataframe1 = get_all_securities()
+print("深圳证券交易所和上海证券交易所的所有股票信息：")
+dataframe1
+
+dataframe2 = get_all_securities(types=['index'])
+print("深圳证券交易所和上海证券交易所的所有指数信息：")
+dataframe2
+
+dataframe3 = get_all_securities(types=['etf'],date='2008-10-12')
+print("深圳证券交易所和上海证券交易所的ETF基金信息：")
+dataframe3
+
+
+

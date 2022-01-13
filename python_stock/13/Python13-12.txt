@@ -1,0 +1,23 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(valuation.code,valuation.pb_ratio,
+                                     valuation.market_cap ).filter(
+valuation.pb_ratio  <  1.2 ,
+valuation.market_cap > 5000 ), date='2019-10-22')
+dataframe1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

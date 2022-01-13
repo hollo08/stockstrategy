@@ -1,0 +1,19 @@
+from jqfactor import Factor
+class MONEY(Factor):
+    # 设置因子名称
+    name = 'ma'
+    # 设置获取数据的时间窗口长度
+    max_window = 1
+    # 设置依赖的数据
+    dependencies = ['money']
+    # 计算因子的函数， 需要返回一个 pandas.Series, index 是股票代码，value 是因子值
+    def calc(self, data):
+        ma = data['money'].mean()
+        return zscore(ma) 
+# 标准化函数
+def zscore(series):
+    std = series.std()
+    mean = series.mean()
+    return (series - mean)/std
+
+

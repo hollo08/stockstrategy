@@ -1,0 +1,24 @@
+import pandas as pd
+dataframe1 = get_fundamentals( query(indicator).filter(
+indicator.inc_net_profit_annual > 600,
+indicator.inc_revenue_annual > 500 ) , date='2019-10-22')
+print("净利润环比增长率大于600，营业收入环比增长率大于500的股票代码：\n",dataframe1['code'])
+print("净利润环比增长率大于600，营业收入环比增长率大于500的净利润环比增长率：\n",dataframe1['inc_net_profit_annual'])
+print("净利润环比增长率大于600，营业收入环比增长率大于500的营业收入环比增长率：\n",dataframe1['inc_revenue_annual'])
+
+myc1 = dataframe1['inc_net_profit_annual']   #净利润环比增长率
+myc2 = dataframe1['inc_revenue_annual']      #营业收入环比增长率
+plt.figure(figsize=(12,6))
+# 激活第一个 subplot
+plt.subplot(2,  1,  1) 
+plt.plot(myc1,"-b")          #净利润环比增长率
+plt.subplot(2,  1,  2) 
+plt.plot(myc2,"-r")          #营业收入环比增长率
+plt.show()
+
+
+
+
+
+
+

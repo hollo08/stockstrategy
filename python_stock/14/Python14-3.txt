@@ -1,0 +1,24 @@
+from jqdata import finance
+q=query(finance.STK_STATUS_CHANGE).filter(finance.STK_STATUS_CHANGE.code=='600057.XSHG')
+df=finance.run_query(q)
+print("招商银行的上市状态编码：",df['public_status_id'][0])
+print("招商银行的上市状态：",df['public_status'][0])
+print("招商银行的变更原因：",df['change_reason'][0])
+print("招商银行的变更类型编码：",df['change_type_id'][0])
+print("招商银行的变更类型：",df['change_type'][0])
+
+
+from jqdata import finance
+q=query(finance.STK_STATUS_CHANGE).filter(finance.STK_STATUS_CHANGE.change_type_id==303002)
+df=finance.run_query(q)
+print("摘星的股票代码：\n",df['code'].values)
+
+
+
+
+
+
+
+
+
+

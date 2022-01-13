@@ -1,0 +1,22 @@
+import pandas as pd
+import seaborn as sns
+pingan = get_price('600019.XSHG', start_date='2018-01-01', end_date='2019-01-01', frequency='daily', fields=['open'])
+fuxing = get_price('600036.XSHG', start_date='2018-01-01', end_date='2019-01-01', frequency='daily', fields=['close'])
+returns_pingan = pingan.pct_change().dropna()
+returns_fuxing = fuxing.pct_change().dropna()
+sns.jointplot(returns_pingan['open'], returns_fuxing['close'], kind='kde')
+
+
+sns.jointplot(returns_pingan['open'], returns_fuxing['close'], kind='scatter')
+
+sns.jointplot(returns_pingan['open'], returns_fuxing['close'], kind='reg')
+
+sns.jointplot(returns_pingan['open'], returns_fuxing['close'], kind='hex')
+
+
+
+
+
+
+
+

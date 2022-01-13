@@ -1,0 +1,21 @@
+import pandas as pd
+dataframe1 = get_locked_shares(stock_list=['000001.XSHE', '600019.XSHG'], start_date='2017-10-16', forward_count=2000)
+dataframe1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
